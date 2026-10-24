@@ -56,7 +56,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; 
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([e]) => e.isIntersecting && (el.classList.add("is-visible"), io.disconnect()),
+      ([e]) => e?.isIntersecting && (el.classList.add("is-visible"), io.disconnect()),
       { threshold: 0.15 },
     );
     io.observe(el);
