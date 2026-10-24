@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg.asset.json";
 import { EVENT, getRemaining, getStartTimestamp } from "@/lib/event";
+import { MerchStore } from "@/components/MerchStore";
 
 const TITLE = "Festival of Praise @20 — 27 March 2027 | Bethlehem Methodist Church, Tema";
 const DESC =
@@ -47,6 +48,7 @@ const NAV = [
   ["About", "about"],
   ["Details", "details"],
   ["Highlights", "highlights"],
+  ["Merch", "merch"],
   ["Share", "share"],
 ] as const;
 
@@ -346,6 +348,7 @@ function Index() {
         <About />
         <Details />
         <Highlights />
+        <MerchStore />
         <Share />
       </main>
       <Footer />
