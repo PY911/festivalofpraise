@@ -50,8 +50,8 @@ export function MerchStore() {
         <p className="text-xs font-bold uppercase tracking-[0.4em] text-primary">Festival store</p>
         <h2 className="mt-3 text-4xl font-black text-royal sm:text-5xl">Order your @20 merch</h2>
         <p className="mt-3 text-muted-foreground">
-          Place your order now — payment details will be shared with you.
-          {PRICES_ARE_SAMPLE && <span className="ml-1 font-semibold text-primary">Prices shown are samples and will be updated.</span>}
+          Place your order now — pricing will be announced soon.
+          {!PRICES_ARE_SAMPLE && <span className="ml-1 font-semibold text-primary">The final price list will be shared soon.</span>}
         </p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -61,10 +61,11 @@ export function MerchStore() {
                 <img src={p.image} alt={p.name} loading="lazy" width={816} height={816} className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" />
               </div>
               <div className="p-5">
-                <div className="flex items-baseline justify-between gap-2">
+                <div className="flex items-center justify-between gap-2">
                   <h3 className="text-lg font-bold">{p.name}</h3>
-                  <p className="font-display font-bold text-primary">GHS {p.price}</p>
+                  <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-bold uppercase tracking-wide text-primary">TBA</span>
                 </div>
+                <p className="mt-3 text-sm font-semibold text-muted-foreground">Price to be announced soon</p>
                 <div className="mt-4 flex gap-2">
                   {p.options && (
                     <select aria-label={`${p.name} size`} className="rounded-full border bg-card px-3 py-2 text-sm font-semibold"
@@ -93,11 +94,11 @@ export function MerchStore() {
                       <button aria-label="Decrease" onClick={() => setQty(i, l.qty - 1)} className="h-8 w-8 rounded-full border font-bold">−</button>
                       <span className="w-6 text-center">{l.qty}</span>
                       <button aria-label="Increase" onClick={() => setQty(i, l.qty + 1)} className="h-8 w-8 rounded-full border font-bold">+</button>
-                      <span className="w-20 text-right font-bold">GHS {l.qty * l.price}</span>
+                      <span className="w-24 text-right font-bold text-muted-foreground">TBA</span>
                     </span>
                   </li>
                 ))}
-                <li className="flex justify-between py-3 text-lg font-black"><span>Total</span><span>GHS {cartTotal(cart)}</span></li>
+                <li className="flex justify-between py-3 text-lg font-black"><span>Total</span><span className="text-muted-foreground">To be announced soon</span></li>
               </ul>
             )}
           </div>

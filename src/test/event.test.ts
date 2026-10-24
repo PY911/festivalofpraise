@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getRemaining, getStartTimestamp } from "@/lib/event";
-import { cartTotal } from "@/lib/merch";
+import { cartTotal, orderMessage } from "@/lib/merch";
 
 describe("countdown", () => {
   it("counts to the start of festival day (27 March 2027, Accra) while no time is announced", () => {
@@ -19,5 +19,12 @@ describe("countdown", () => {
 describe("cart", () => {
   it("totals quantity × price", () => {
     expect(cartTotal([{ id: "a", name: "A", qty: 2, price: 120 }, { id: "b", name: "B", qty: 1, price: 70 }])).toBe(310);
+  });
+
+  it("uses a to-be-announced total when merch pricing is not yet final", () => {
+    const message = orderMessage("Jane", "024 123 4567", [{ id: "a", name: "A", qty: 1, price: 0 }]);
+
+    expect(message).toContain("Total: To be announced soon");
+    expect(message).not.toContain("GHS");
   });
 });
