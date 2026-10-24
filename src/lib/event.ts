@@ -11,15 +11,15 @@ export const EVENT = {
   programme: "Late afternoon into the evening",
   /**
    * Official start time in 24h "HH:MM" (Africa/Accra, UTC+0).
-   * Leave null until the time is confirmed — the countdown activates automatically once set.
+   * While null, the countdown runs to the start of festival day (00:00 Accra).
    */
   startTime: null as string | null,
 };
 
-/** Accra is UTC+0 year-round, so the local time maps directly to UTC. */
-export function getStartTimestamp(date: string, startTime: string | null): number | null {
-  if (!startTime || !/^\d{2}:\d{2}$/.test(startTime)) return null;
-  return Date.parse(`${date}T${startTime}:00Z`);
+/** Accra is UTC+0 year-round, so local time maps directly to UTC. Falls back to the start of the day. */
+export function getStartTimestamp(date: string, startTime: string | null): number {
+  const t = startTime && /^\d{2}:\d{2}$/.test(startTime) ? startTime : "00:00";
+  return Date.parse(`${date}T${t}:00Z`);
 }
 
 export function getRemaining(target: number, now: number) {
