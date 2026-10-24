@@ -161,33 +161,33 @@ function Countdown() {
   const target = getStartTimestamp(EVENT.date, EVENT.startTime);
   const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
-    if (!target) return;
     setNow(Date.now());
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(t);
   }, [target]);
-  const r = target && now ? getRemaining(target, now) : null;
+  const r = now ? getRemaining(target, now) : null;
+  const units = r ? ([["Days", r.days], ["Hours", r.hours], ["Minutes", r.minutes], ["Seconds", r.seconds]] as const) : null;
   return (
     <section id="countdown" className="bg-night px-5 py-24 text-snow">
       <Reveal className="mx-auto max-w-4xl text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.4em] text-sky">Save the date</p>
+        <p className="text-xs font-bold uppercase tracking-[0.4em] text-sky">Counting down to festival day</p>
         <h2 className="mt-4 text-4xl font-black sm:text-6xl">{EVENT.dateLabel}</h2>
         <p className="mt-2 text-sky">{EVENT.dateNote}</p>
-        {r ? (
-          <div className="mt-10 grid grid-cols-4 gap-3" role="timer" aria-label={`${r.days} days, ${r.hours} hours, ${r.minutes} minutes, ${r.seconds} seconds to go`}>
-            {([["Days", r.days], ["Hours", r.hours], ["Minutes", r.minutes], ["Seconds", r.seconds]] as const).map(([l, v]) => (
-              <div key={l} className="glass rounded-2xl py-6">
-                <div key={v} className="animate-rise font-display text-3xl font-black sm:text-5xl">{String(v).padStart(2, "0")}</div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-sky">{l}</div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="relative mx-auto mt-10 max-w-xl">
+        <div className="mt-10 grid grid-cols-4 gap-2 sm:gap-4" role="timer"
+          aria-label={r ? `${r.days} days, ${r.hours} hours, ${r.minutes} minutes, ${r.seconds} seconds until festival day` : "Countdown loading"}>
+          {(units ?? ([["Days", 0], ["Hours", 0], ["Minutes", 0], ["Seconds", 0]] as const)).map(([l, v]) => (
+            <div key={l} className="glass overflow-hidden rounded-2xl py-6">
+              <div key={v} className="animate-rise font-display text-3xl font-black tabular-nums sm:text-6xl">{units ? String(v).padStart(2, "0") : "--"}</div>
+              <div className="mt-1 text-[10px] uppercase tracking-widest text-sky sm:text-xs">{l}</div>
+            </div>
+          ))}
+        </div>
+        {!EVENT.startTime && (
+          <div className="relative mx-auto mt-8 max-w-xl">
             <span aria-hidden className="ring-pulse absolute inset-0 rounded-3xl border-2 border-sky" />
-            <div className="glass relative rounded-3xl px-8 py-8">
-              <p className="font-display text-xl font-bold sm:text-2xl">Official Start Time to Be Announced</p>
-              <p className="mt-2 text-snow/75">Programme runs late afternoon into the evening. The countdown goes live once the time is confirmed.</p>
+            <div className="glass relative rounded-3xl px-6 py-5">
+              <p className="font-display text-lg font-bold">Official Start Time to Be Announced</p>
+              <p className="mt-1 text-sm text-snow/75">Programme runs late afternoon into the evening.</p>
             </div>
           </div>
         )}
