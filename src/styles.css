@@ -101,7 +101,7 @@
   fill: var(--snow); fill-opacity: 0; stroke: var(--sky); stroke-width: 2;
   stroke-dasharray: 900; stroke-dashoffset: 900;
   animation: draw 2.4s .6s ease forwards, fill-in 1s 2.6s ease forwards;
-  filter: drop-shadow(0 0 18px var(--sky));
+
 }
 @utility shimmer-line {
   background: linear-gradient(90deg, transparent, var(--sky), var(--snow), var(--sky), transparent);

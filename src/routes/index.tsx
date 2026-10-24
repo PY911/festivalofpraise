@@ -139,8 +139,8 @@ function Hero() {
         <h1 className="animate-rise mt-6 text-5xl font-black leading-[0.95] sm:text-7xl lg:text-8xl" style={{ animationDelay: ".2s" }}>
           Festival<br />of Praise
         </h1>
-        <svg viewBox="0 0 360 200" className="mx-auto mt-2 w-64 sm:w-96" role="img" aria-label="@20">
-          <text x="50%" y="160" textAnchor="middle" className="twenty-stroke" style={{ font: "900 180px Unbounded, sans-serif" }}>@20</text>
+        <svg viewBox="0 0 560 200" className="mx-auto mt-2 w-72 overflow-visible sm:w-[30rem]" role="img" aria-label="@20">
+          <text x="50%" y="160" textAnchor="middle" className="twenty-stroke" style={{ font: "900 160px Unbounded, sans-serif" }}>@20</text>
         </svg>
         <p className="animate-rise font-display text-lg font-bold uppercase tracking-[0.3em] text-sky" style={{ animationDelay: "1.8s" }}>20 Years of Praise</p>
         <p className="animate-rise mx-auto mt-5 max-w-2xl text-lg text-snow/85 sm:text-xl" style={{ animationDelay: "2.1s" }}>{EVENT.campaign}</p>
