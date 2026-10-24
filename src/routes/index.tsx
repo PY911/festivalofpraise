@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
-import logo from "@/assets/bethlehem-logo.jpg.asset.json";
+import logo from "@/assets/bethlehem-logo.jpg";
 import { EVENT, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
@@ -84,8 +84,8 @@ function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all ${scrolled ? "bg-deep/85 backdrop-blur-md shadow-lg" : ""}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
         <a href="#top" className="flex items-center gap-3 text-snow">
-          <img src={logo.url} alt="Bethlehem Society Methodist Church Ghana logo" className="h-11 w-11 rounded-full" width={44} height={44} />
-          <span className="font-display text-sm font-bold leading-tight">Festival of Praise<span className="text-sky"> @20</span></span>
+          <img src={logo} alt="Bethlehem Society Methodist Church Ghana logo" className="h-11 w-11 rounded-full" width={44} height={44} />
+          <span className="font-display text-sm font-bold leading-tight">Festival of Praise<span className="text-sky">@20</span></span>
         </a>
         <nav aria-label="Main" className="hidden gap-7 md:flex">
           {NAV.map(([l, id]) => (
@@ -273,23 +273,12 @@ function Highlights() {
 
 function Share() {
   const [url, setUrl] = useState("");
-  const [copied, setCopied] = useState(false);
   const [canShare, setCanShare] = useState(false);
   useEffect(() => {
     setUrl(window.location.origin + window.location.pathname);
     setCanShare(typeof navigator.share === "function");
   }, []);
   const text = `${EVENT.name} — ${EVENT.campaign} ${EVENT.dateLabel}, ${EVENT.venue}.`;
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch {
-      const t = document.createElement("textarea");
-      t.value = url; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove();
-    }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
   const btn = "rounded-full px-6 py-3 font-bold transition hover:-translate-y-0.5 active:scale-95";
   return (
     <section id="share" className="px-5 py-24 text-center">
@@ -301,12 +290,14 @@ function Share() {
             href={`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`}>WhatsApp</a>
           <a className={`${btn} bg-royal text-snow`} target="_blank" rel="noopener noreferrer"
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}>Facebook</a>
+          <a className={`${btn} bg-pink-600 text-white`} target="_blank" rel="noopener noreferrer"
+            href="https://www.instagram.com/" aria-label="Instagram">Instagram</a>
+          <a className={`${btn} bg-sky-500 text-snow`} target="_blank" rel="noopener noreferrer"
+            href="https://www.tiktok.com/" aria-label="TikTok">TikTok</a>
           {canShare && (
             <button className={`${btn} border-2 border-primary text-primary`} onClick={() => navigator.share({ title: EVENT.name, text, url }).catch(() => {})}>Share…</button>
           )}
-          <button className={`${btn} border-2 border-royal text-royal`} onClick={copy}>{copied ? "Link copied ✓" : "Copy link"}</button>
         </div>
-        <p aria-live="polite" className="sr-only">{copied ? "Link copied to clipboard" : ""}</p>
       </Reveal>
     </section>
   );
@@ -323,7 +314,7 @@ function Footer() {
     <footer className="bg-deep px-5 pt-1 pb-10 text-snow">
       <div aria-hidden className="shimmer-line mx-auto h-px max-w-6xl" />
       <div className="mx-auto mt-12 grid max-w-6xl gap-8 md:grid-cols-[auto_1fr] md:items-center">
-        <img src={logo.url} alt="Bethlehem Society Methodist Church Ghana logo" className="h-20 w-20 rounded-full" loading="lazy" width={80} height={80} />
+        <img src={logo} alt="Bethlehem Society Methodist Church Ghana logo" className="h-20 w-20 rounded-full" loading="lazy" width={80} height={80} />
         <div>
           <p className="font-display text-2xl font-black">Festival of Praise <span className="text-sky">@20</span></p>
           <p className="text-sky">20 Years of Praise</p>
@@ -331,7 +322,7 @@ function Footer() {
           <p className="text-snow/75">Organized by {EVENT.organizer}</p>
         </div>
       </div>
-      <p className="mt-12 text-center text-sm text-snow/60">Made with ❤️ by Media</p>
+      <p className="mt-12 text-center text-sm text-snow/60">Made with ❤️ by Bethlehem Media</p>
       <button aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className={`fixed right-5 bottom-5 z-40 h-12 w-12 rounded-full bg-snow font-bold text-royal shadow-[var(--glow)] transition-all hover:-translate-y-1 ${show ? "opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}>↑</button>
     </footer>

@@ -1,7 +1,9 @@
 import { QueryClient } from "@tanstack/react-query";
 import { createRouter, rootRouteId } from "@tanstack/react-router";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { Route } from "@/routes/index";
 import { routeTree } from "@/routeTree.gen";
 
 // Match routes without running loaders or rendering: loaders may need a server or
@@ -13,5 +15,16 @@ describe("App routing", () => {
     const matches = router.matchRoutes("/");
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
+
+  it("renders the local church logo instead of the Lovable metadata URL", () => {
+    render(<Route.options.component />);
+
+    const logos = screen.getAllByAltText("Bethlehem Society Methodist Church Ghana logo");
+
+    expect(logos.length).toBeGreaterThan(0);
+    logos.forEach((logo) => {
+      expect((logo as HTMLImageElement).src).not.toContain("/__l5e/assets-v1/");
+    });
   });
 });
