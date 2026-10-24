@@ -5,9 +5,9 @@ import logo from "@/assets/bethlehem-logo.jpg";
 import { EVENT, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
-const TITLE = "Festival of Praise @20 — 27 March 2027 | Bethlehem Methodist Church, Tema";
+const TITLE = "Festival of Praise @20 — 27 March 2027 | Golf City - Tema";
 const DESC =
-  "Two Decades of Praise. One Unforgettable Celebration. Open-air gospel concert on the Church Field, Bethlehem Methodist Church, Tema — Saturday 27 March 2027.";
+  "Two Decades of Praise. One Unforgettable Celebration. Open-air gospel concert at Golf City - Tema — Saturday 27 March 2027.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
           eventStatus: "https://schema.org/EventScheduled",
           location: {
             "@type": "Place",
-            name: "Church Field, Bethlehem Methodist Church",
+            name: "Golf City - Tema",
             address: { "@type": "PostalAddress", addressLocality: "Tema", addressCountry: "GH" },
           },
           organizer: { "@type": "Organization", name: EVENT.organizer },
@@ -208,7 +208,7 @@ function About() {
         </Reveal>
         <Reveal delay={150}>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Festival of Praise @20 gathers the church and the wider community on the Church Field for an open-air evening of worship,
+            Festival of Praise @20 gathers the church and the wider community at Golf City - Tema for an open-air evening of worship,
             thanksgiving and fellowship. As the afternoon light fades into night, we lift our voices together to celebrate two decades of praise
             and the faithfulness of God.
           </p>
@@ -284,7 +284,7 @@ function Share() {
     <section id="share" className="px-5 py-24 text-center">
       <Reveal className="mx-auto max-w-3xl">
         <h2 className="text-4xl font-black text-royal sm:text-5xl">Share the celebration</h2>
-        <p className="mt-4 text-muted-foreground">Invite family and friends to Festival of Praise @20.</p>
+        <p className="mt-4 text-muted-foreground">Invite family and friends to Festival of Praise @20 at Golf City - Tema.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a className={`${btn} bg-primary text-primary-foreground`} target="_blank" rel="noopener noreferrer"
             href={`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`}>WhatsApp</a>

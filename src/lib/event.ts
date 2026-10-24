@@ -5,8 +5,8 @@ export const EVENT = {
   dateLabel: "Saturday, 27 March 2027",
   dateNote: "Easter Saturday",
   date: "2027-03-27",
-  venue: "Church Field, Bethlehem Methodist Church, Tema, Ghana",
-  venueShort: "Church Field · Bethlehem Methodist Church, Tema",
+  venue: "Golf City - Tema, Ghana",
+  venueShort: "Golf City - Tema",
   organizer: "Bethlehem Methodist Church, Tema",
   programme: "Late afternoon into the evening",
   /**
