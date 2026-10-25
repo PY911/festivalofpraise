@@ -295,6 +295,26 @@ function Highlights() {
   );
 }
 
+const ICONS: Record<string, ReactNode> = {
+  Instagram: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-full w-full" aria-hidden>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  TikTok: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-full w-full" aria-hidden>
+      <path d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.78.73 3.49 1.75 4.87 1.4 1.82 3.53 2.96 5.79 3.14v5.03c-3.81-.06-7.39-1.28-10.71-3.08v2.51c.39 5.33 4.58 9.74 9.92 10.17 2.58.21 5.14-.5 7.25-1.95 2.15-1.48 3.65-3.72 4.28-6.22.1-.4.17-.81.2-1.22V9.13c-1.9.35-3.83.26-5.71-.27V4.34c-2.95-.36-5.75-1.76-7.87-3.94C10.1 2.9 9.02 1.44 8.31.15c1.4-.09 2.81-.1 4.22-.13z" />
+    </svg>
+  ),
+  Facebook: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-full w-full" aria-hidden>
+      <path d="M9.1 23.7v-8h-2.5v-3.7h2.5V10.4c0-4.1 1.8-6.5 6.5-6.5h3.9v3.7h-3.7c-1.8 0-2.5.6-2.5 2.5v1.6h6.1l-1 3.7h-5.1v8z" />
+    </svg>
+  ),
+};
+
 function Share() {
   const [url, setUrl] = useState("");
   const [canShare, setCanShare] = useState(false);
@@ -314,13 +334,25 @@ function Share() {
             href={`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`}>WhatsApp</a>
           <a className={`${btn} bg-royal text-snow`} target="_blank" rel="noopener noreferrer"
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}>Facebook</a>
-          <a className={`${btn} bg-pink-600 text-white`} target="_blank" rel="noopener noreferrer"
-            href="https://www.instagram.com/" aria-label="Instagram">Instagram</a>
-          <a className={`${btn} bg-sky-500 text-snow`} target="_blank" rel="noopener noreferrer"
-            href="https://www.tiktok.com/" aria-label="TikTok">TikTok</a>
           {canShare && (
             <button className={`${btn} border-2 border-primary text-primary`} onClick={() => navigator.share({ title: EVENT.name, text, url }).catch(() => {})}>Share…</button>
           )}
+        </div>
+
+        <div className="mt-14">
+          <p className="text-xs font-bold uppercase tracking-[0.4em] text-primary">Follow us</p>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            {SOCIAL.map((s) => (
+              <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-full border bg-card px-5 py-3 text-royal transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95">
+                <span className="h-5 w-5 text-primary">{ICONS[s.label]}</span>
+                <span className="text-left leading-tight">
+                  <span className="block text-sm font-bold">{s.label}</span>
+                  <span className="block text-xs font-semibold text-muted-foreground">{s.handle}</span>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </Reveal>
     </section>
@@ -345,6 +377,14 @@ function Footer() {
           <p className="mt-3 text-snow/75">{EVENT.dateLabel} · {EVENT.venue}</p>
           <p className="text-snow/75">Organized by {EVENT.organizer}</p>
         </div>
+      </div>
+      <div className="mx-auto mt-8 flex max-w-6xl flex-wrap justify-center gap-3 md:justify-start">
+        {SOCIAL.map((s) => (
+          <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`${EVENT.organizer} on ${s.label}`}
+            className="glass flex h-11 w-11 items-center justify-center rounded-full text-snow transition hover:-translate-y-0.5 hover:text-sky active:scale-95">
+            <span className="h-5 w-5">{ICONS[s.label]}</span>
+          </a>
+        ))}
       </div>
       <p className="mt-12 text-center text-sm text-snow/60"> Made with ❤️ by Bethlehem Methodist Media</p>
       <button aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
