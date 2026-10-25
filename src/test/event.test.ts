@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { EVENT, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
+import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { cartTotal, orderMessage } from "@/lib/merch";
 
 describe("countdown", () => {
@@ -27,6 +27,16 @@ describe("calendar and map", () => {
 
   it("points the directions button at a Google Maps search for the venue", () => {
     expect(getMapUrl()).toBe(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT.venue)}`);
+  });
+});
+
+describe("social pages", () => {
+  it("links to the church's real Instagram, TikTok and Facebook pages", () => {
+    expect(SOCIAL.map((s) => s.url)).toEqual([
+      "https://www.instagram.com/bethlehemonline_/",
+      "https://www.tiktok.com/@bethlehemonline",
+      "https://www.facebook.com/BethlehemSociety",
+    ]);
   });
 });
 
