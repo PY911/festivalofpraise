@@ -18,7 +18,9 @@ describe("App routing", () => {
   });
 
   it("renders the local church logo instead of the Lovable metadata URL", () => {
-    render(<Route.options.component />);
+    const Comp = Route.options.component;
+    if (!Comp) throw new Error("Route / has no component");
+    render(<Comp />);
 
     const logos = screen.getAllByAltText("Bethlehem Society Methodist Church Ghana logo");
 
