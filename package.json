@@ -14,11 +14,10 @@
     "test:watch": "vitest"
   },
   "overrides": {
-    "@ai-sdk/provider": "4.0.33",
     "rolldown": "1.2.1"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^4.0.101",
+    "@ai-sdk/openai": "4.0.99",
     "@ai-sdk/openai-compatible": "^3.0.77",
     "@ai-sdk/react": "^4.0.152",
     "@hookform/resolvers": "^5.2.2",
