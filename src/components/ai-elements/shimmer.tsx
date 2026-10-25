@@ -46,6 +46,11 @@ const ShimmerComponent = ({
     () => (children?.length ?? 0) * spread,
     [children, spread]
   );
+  const shimmerStyle: MotionStyle & { "--spread": string } = {
+    "--spread": `${dynamicSpread}px`,
+    backgroundImage:
+      "var(--bg), linear-gradient(var(--color-muted-foreground), var(--color-muted-foreground))",
+  };
 
   return (
     <MotionComponent
@@ -56,13 +61,7 @@ const ShimmerComponent = ({
         className
       )}
       initial={{ backgroundPosition: "100% center" }}
-      style={
-        {
-          "--spread": `${dynamicSpread}px`,
-          backgroundImage:
-            "var(--bg), linear-gradient(var(--color-muted-foreground), var(--color-muted-foreground))",
-        } satisfies MotionStyle & { "--spread": string }
-      }
+      style={shimmerStyle}
       transition={{
         duration,
         ease: "linear",

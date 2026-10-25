@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createRouter, rootRouteId } from "@tanstack/react-router";
+import { createRouter, rootRouteId, RouterContextProvider } from "@tanstack/react-router";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
@@ -20,7 +20,8 @@ describe("App routing", () => {
   it("renders the local church logo instead of the Lovable metadata URL", () => {
     const Comp = Route.options.component;
     if (!Comp) throw new Error("Route / has no component");
-    render(<Comp />);
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    render(<RouterContextProvider router={router}><Comp /></RouterContextProvider>);
 
     const logos = screen.getAllByAltText("Bethlehem Society Methodist Church Ghana logo");
 
