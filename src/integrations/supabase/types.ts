@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      festival_ai_service_state: {
+        Row: {
+          id: string
+          message: string
+          status: number
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          message: string
+          status: number
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          message?: string
+          status?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       merch_orders: {
         Row: {
           created_at: string
