@@ -30,6 +30,16 @@ describe("calendar and map", () => {
   });
 });
 
+describe("social pages", () => {
+  it("links to the church's real Instagram, TikTok and Facebook pages", () => {
+    expect(SOCIAL.map((s) => s.url)).toEqual([
+      "https://www.instagram.com/bethlehemonline_/",
+      "https://www.tiktok.com/@bethlehemonline",
+      "https://www.facebook.com/BethlehemSociety",
+    ]);
+  });
+});
+
 describe("cart", () => {
   it("totals quantity × price", () => {
     expect(cartTotal([{ id: "a", name: "A", qty: 2, price: 120 }, { id: "b", name: "B", qty: 1, price: 70 }])).toBe(310);
