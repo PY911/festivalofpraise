@@ -17,7 +17,8 @@ export function MerchStore() {
     setCart((c) => {
       const i = c.findIndex((l) => l.id === id && l.option === option);
       if (i >= 0) return c.map((l, j) => (j === i ? { ...l, qty: l.qty + 1 } : l));
-      return [...c, { id, name: p.name, option, qty: 1, price: p.price }];
+      const line: CartLine = option === undefined ? { id, name: p.name, qty: 1, price: p.price } : { id, name: p.name, option, qty: 1, price: p.price };
+      return [...c, line];
     });
     setState("idle");
   };
