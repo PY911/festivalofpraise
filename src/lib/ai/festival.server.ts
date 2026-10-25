@@ -45,7 +45,15 @@ export async function answerFestival(request: Request, apiKey: string) {
   });
   const result = streamText({
     model: provider.responses("openai/gpt-6-astra"), instructions: festivalInstructions(),
-    messages: await convertToModelMessages(messages.filter(m => m.parts.some(p => p.type === "text")), { ignoreIncompleteToolCalls: true }),
+    // History lives in the browser and can't be trusted: forward only the caller's own
+    // user-role text to the model, never caller-supplied assistant turns.
+    messages: await convertToModelMessages(
+      messages
+        .filter(m => m.role === "user")
+        .map(m => ({ ...m, parts: m.parts.filter(p => p.type === "text") }))
+        .filter(m => m.parts.length > 0),
+      { ignoreIncompleteToolCalls: true },
+    ),
     abortSignal: request.signal, maxRetries: 0,
     providerOptions: { openai: { forceReasoning: true, reasoningEffort: "low", reasoningSummary: "auto", store: false, include: ["reasoning.encrypted_content"] } },
   });
