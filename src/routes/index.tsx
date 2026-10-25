@@ -184,7 +184,7 @@ function Countdown() {
   return (
     <section id="countdown" className="bg-night px-5 py-24 text-snow">
       <Reveal className="mx-auto max-w-4xl text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.4em] text-sky">Counting down to festival day</p>
+        <p className="text-xs font-bold uppercase tracking-[0.4em] text-sky">Countdown to Festival of Praise @20</p>
         <h2 className="mt-4 text-4xl font-black sm:text-6xl">{EVENT.dateLabel}</h2>
         <p className="mt-2 text-sky">{EVENT.dateNote}</p>
         <div className="mt-10 grid grid-cols-4 gap-2 sm:gap-4" role="timer"
@@ -201,7 +201,7 @@ function Countdown() {
             <span aria-hidden className="ring-pulse absolute inset-0 rounded-3xl border-2 border-sky" />
             <div className="glass relative rounded-3xl px-6 py-5">
               <p className="font-display text-lg font-bold">Official Start Time to Be Announced</p>
-              <p className="mt-1 text-sm text-snow/75">Programme runs late afternoon into the evening.</p>
+              <p className="mt-1 text-sm text-snow/75">Programme runs from late afternoon into the evening.</p>
             </div>
           </div>
         )}
