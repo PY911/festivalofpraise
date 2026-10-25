@@ -2,7 +2,7 @@ import type { UIMessage } from "ai";
 
 export type FestivalThread = { id: string; title: string; updatedAt: number; messages: UIMessage[] };
 const KEY = "festival-praise-chats-v1";
-export function newThread(id = crypto.randomUUID()): FestivalThread {
+export function newThread(id: string = crypto.randomUUID()): FestivalThread {
   return { id, title: "New conversation", updatedAt: Date.now(), messages: [] };
 }
 export function readThreads(): FestivalThread[] {

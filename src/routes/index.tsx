@@ -409,7 +409,7 @@ function Index() {
         <Share />
       </main>
       <Footer />
-      <Button asChild className="fixed bottom-5 left-5 z-40 h-12 rounded-full px-5 shadow-lg"><Link to="/ask/"><MessageCircle />Ask the festival</Link></Button>
+      <Button asChild className="fixed bottom-5 left-5 z-40 h-12 rounded-full px-5 shadow-lg"><Link to="/ask"><MessageCircle />Ask the festival</Link></Button>
     </>
   );
 }
