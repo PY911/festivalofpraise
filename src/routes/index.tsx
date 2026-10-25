@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg";
@@ -407,6 +409,7 @@ function Index() {
         <Share />
       </main>
       <Footer />
+      <Button asChild className="fixed bottom-5 left-5 z-40 h-12 rounded-full px-5 shadow-lg"><Link to="/ask/"><MessageCircle />Ask the festival</Link></Button>
     </>
   );
 }
