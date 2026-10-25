@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Stabilize mobile Menu and Ask the festival buttons; check scrolling and menu navigation
 - [x] Festival AI questions with browser-saved separate conversations
 - [x] Repair chat type errors and verify visitor questions
 - [x] Merch store on the site (sample prices; orders saved + WhatsApp handoff)

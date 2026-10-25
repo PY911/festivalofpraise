@@ -61,8 +61,8 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
-  body { background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
+  html { scroll-behavior: smooth; overflow-x: clip; }
+  body { overflow-x: clip; background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
   :focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 6px; }
 }

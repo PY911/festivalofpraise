@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
@@ -83,23 +83,23 @@ function Header() {
     return () => window.removeEventListener("scroll", f);
   }, []);
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all ${scrolled ? "bg-deep/85 backdrop-blur-md shadow-lg" : ""}`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
-        <a href="#top" className="flex items-center gap-3 text-snow">
-          <img src={logo} alt="Bethlehem Society Methodist Church Ghana logo" className="h-11 w-11 rounded-full" width={44} height={44} />
-          <span className="font-display text-sm font-bold leading-tight">Festival of Praise<span className="text-sky">@20</span></span>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-colors ${scrolled ? "bg-deep/85 backdrop-blur-md shadow-lg" : ""}`}>
+      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-3 md:flex md:justify-between">
+        <a href="#top" className="flex min-w-0 items-center gap-3 text-snow">
+          <img src={logo} alt="Bethlehem Society Methodist Church Ghana logo" className="h-11 w-11 shrink-0 rounded-full" width={44} height={44} />
+          <span className="min-w-0 font-display text-sm font-bold leading-tight">Festival of Praise<span className="text-sky">@20</span></span>
         </a>
         <nav aria-label="Main" className="hidden gap-7 md:flex">
           {NAV.map(([l, id]) => (
             <a key={id} href={`#${id}`} className="text-sm font-semibold text-snow/80 transition hover:text-snow">{l}</a>
           ))}
         </nav>
-        <button className="rounded-lg glass px-3 py-2 text-sm font-bold text-snow md:hidden" aria-expanded={open} onClick={() => setOpen(!open)}>
-          {open ? "Close" : "Menu"}
-        </button>
+        <Button variant="ghost" size="icon" className="glass h-11 w-11 shrink-0 rounded-lg text-snow hover:bg-snow/10 hover:text-snow md:hidden" aria-label={open ? "Close" : "Menu"} aria-controls="mobile-navigation" aria-expanded={open} onClick={() => setOpen(!open)}>
+          {open ? <X /> : <Menu />}
+        </Button>
       </div>
       {open && (
-        <nav aria-label="Mobile" className="bg-deep/95 px-5 pb-5 md:hidden">
+        <nav id="mobile-navigation" aria-label="Mobile" className="bg-deep/95 px-5 pb-5 md:hidden">
           {NAV.map(([l, id]) => (
             <a key={id} href={`#${id}`} onClick={() => setOpen(false)} className="block border-b border-snow/10 py-3 font-semibold text-snow">{l}</a>
           ))}
@@ -409,7 +409,7 @@ function Index() {
         <Share />
       </main>
       <Footer />
-      <Button asChild className="fixed bottom-5 left-5 z-40 h-12 rounded-full px-5 shadow-lg"><Link to="/ask"><MessageCircle />Ask the festival</Link></Button>
+      <Button asChild className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-[max(1.25rem,env(safe-area-inset-left))] z-40 h-12 w-44 shrink-0 rounded-full px-4 shadow-lg"><Link to="/ask"><MessageCircle />Ask the festival</Link></Button>
     </>
   );
 }
