@@ -22,6 +22,33 @@ export function getStartTimestamp(date: string, startTime: string | null): numbe
   return Date.parse(`${date}T${t}:00Z`);
 }
 
+/** Google Maps search URL for the venue, so directions always match what the site shows. */
+export function getMapUrl(): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT.venue)}`;
+}
+
+/** All-day ICS calendar file for festival day (start time is not yet announced). `dtstamp` is injectable for tests. */
+export function buildIcs(dtstamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "")): string {
+  const day = EVENT.date.replace(/-/g, "");
+  const next = new Date(Date.parse(`${EVENT.date}T00:00:00Z`) + 86_400_000).toISOString().slice(0, 10).replace(/-/g, "");
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Bethlehem Methodist Church Tema//Festival of Praise//EN",
+    "BEGIN:VEVENT",
+    "UID:festival-of-praise-20@bethlehem-tema",
+    `DTSTAMP:${dtstamp}`,
+    `DTSTART;VALUE=DATE:${day}`,
+    `DTEND;VALUE=DATE:${next}`,
+    `SUMMARY:${EVENT.name} — ${EVENT.tagline}`,
+    `DESCRIPTION:${EVENT.campaign}`,
+    `LOCATION:${EVENT.venue}`,
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ];
+  return lines.join("\r\n") + "\r\n";
+}
+
 export function getRemaining(target: number, now: number) {
   const diff = Math.max(0, target - now);
   return {

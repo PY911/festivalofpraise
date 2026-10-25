@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg";
-import { EVENT, getRemaining, getStartTimestamp } from "@/lib/event";
+import { EVENT, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
 const TITLE = "Festival of Praise @20 — 27 March 2027 | Golf City - Tema";
@@ -159,6 +159,16 @@ function Hero() {
   );
 }
 
+function addToCalendar() {
+  const blob = new Blob([buildIcs()], { type: "text/calendar" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "festival-of-praise-20.ics";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function Countdown() {
   const target = getStartTimestamp(EVENT.date, EVENT.startTime);
   const [now, setNow] = useState<number | null>(null);
@@ -193,6 +203,12 @@ function Countdown() {
             </div>
           </div>
         )}
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <button onClick={addToCalendar}
+            className="rounded-full bg-snow px-8 py-4 font-bold text-royal shadow-[var(--glow)] transition hover:-translate-y-0.5 hover:bg-sky active:scale-95">
+            Add to Calendar
+          </button>
+        </div>
       </Reveal>
     </section>
   );
@@ -240,6 +256,14 @@ function Details() {
             </Reveal>
           ))}
         </div>
+        <Reveal delay={200}>
+          <div className="mt-10 text-center">
+            <a href={getMapUrl()} target="_blank" rel="noopener noreferrer"
+              className="inline-block rounded-full bg-primary px-8 py-4 font-bold text-primary-foreground transition hover:-translate-y-0.5 active:scale-95">
+              Get Directions on Google Maps
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
