@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg";
-import { EVENT, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
+import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
 const TITLE = "Festival of Praise @20 — 27 March 2027 | Golf City - Tema";

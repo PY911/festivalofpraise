@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { EVENT, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
+import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { cartTotal, orderMessage } from "@/lib/merch";
 
 describe("countdown", () => {

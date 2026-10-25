@@ -16,6 +16,16 @@ export const EVENT = {
   startTime: null as string | null,
 };
 
+/**
+ * Official social pages of the organizer (supplied by the church).
+ * Every link on the site points here — never a placeholder profile URL.
+ */
+export const SOCIAL = [
+  { label: "Instagram", handle: "@bethlehemonline_", url: "https://www.instagram.com/bethlehemonline_/" },
+  { label: "TikTok", handle: "@bethlehemonline", url: "https://www.tiktok.com/@bethlehemonline" },
+  { label: "Facebook", handle: "Bethlehem Society", url: "https://www.facebook.com/BethlehemSociety" },
+] as const;
+
 /** Accra is UTC+0 year-round, so local time maps directly to UTC. Falls back to the start of the day. */
 export function getStartTimestamp(date: string, startTime: string | null): number {
   const t = startTime && /^\d{2}:\d{2}$/.test(startTime) ? startTime : "00:00";
