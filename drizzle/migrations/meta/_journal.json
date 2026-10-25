@@ -8,6 +8,13 @@
       "when": 1792872497892,
       "tag": "0000_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792936689801,
+      "tag": "0001_festival_ai_service_state",
+      "breakpoints": true
     }
   ]
 }
