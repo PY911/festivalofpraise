@@ -392,7 +392,7 @@ function Footer() {
         <Link to="/privacy" className="hover:text-sky">Privacy Policy</Link>
         <Link to="/terms" className="hover:text-sky">Terms of Use</Link>
       </div>
-      <p className="mt-4 text-center text-sm text-snow/60"> Made with ❤️ by Bethlehem Methodist Media</p>
+      <p className="mt-4 text-center text-sm text-snow/60">Made with ❤️ by Bethlehem Methodist Media</p>
       <button aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className={`fixed right-5 bottom-5 z-40 h-12 w-12 rounded-full bg-snow font-bold text-royal shadow-[var(--glow)] transition-all hover:-translate-y-1 ${show ? "opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}>↑</button>
     </footer>

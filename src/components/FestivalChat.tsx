@@ -12,6 +12,8 @@ import { Reasoning, ReasoningTrigger, ReasoningContent } from "@/components/ai-e
 import { Shimmer } from "@/components/ai-elements/shimmer";
 import { ensureThread, newThread, readThreads, saveThreads, type FestivalThread } from "@/lib/festival-chats";
 
+const isStaticHost = typeof window !== "undefined" && !window.location.hostname.match(/^(localhost|127\.0\.0\.1)$/);
+
 export function FestivalChat({ threadId }: { threadId: string }) {
   const [threads, setThreads] = useState<FestivalThread[]>([]);
   const [ready, setReady] = useState(false);
@@ -69,8 +71,15 @@ export function FestivalChat({ threadId }: { threadId: string }) {
 function ChatWindow({ thread, onMessages }: { thread: FestivalThread; onMessages: (messages: UIMessage[]) => void }) {
   const [input, setInput] = useState("");
   const textarea = useRef<HTMLTextAreaElement>(null);
-  const [transport] = useState(() => new DefaultChatTransport({ api: "/api/festival-chat", body: { conversationId: thread.id } }));
-  const { messages, sendMessage, status, stop, error, clearError } = useChat({ id: thread.id, messages: thread.messages, transport,
+  const [transport] = useState(() =>
+    isStaticHost
+      ? null
+      : new DefaultChatTransport({ api: "/api/festival-chat", body: { conversationId: thread.id } }),
+  );
+  const { messages, sendMessage, status, stop, error, clearError } = useChat({
+    id: thread.id,
+    messages: thread.messages,
+    transport: transport ?? undefined,
     onFinish: ({ messages: finished }) => { onMessages(finished); textarea.current?.focus(); },
     onError: () => textarea.current?.focus(),
   });
@@ -80,9 +89,14 @@ function ChatWindow({ thread, onMessages }: { thread: FestivalThread; onMessages
   useEffect(() => () => { void stop(); }, [stop]);
   function send(text: string) {
     if (!text.trim() || busy) return;
+    if (isStaticHost) {
+      setInput("");
+      return;
+    }
     clearError(); setInput(""); void sendMessage({ text: text.trim() }); textarea.current?.focus();
   }
   return <>
+    {isStaticHost && <div className="border-b bg-amber-50 px-5 py-3 text-sm text-amber-900">The live festival Q&A is unavailable on GitHub Pages because it needs the server-backed API. This static deployment keeps the event info page working.</div>}
     <Conversation className="min-h-0 flex-1">
       <ConversationContent className="mx-auto w-full max-w-3xl px-5 py-8">
         {!messages.length && <div className="my-auto py-8 sm:py-16">
@@ -103,9 +117,9 @@ function ChatWindow({ thread, onMessages }: { thread: FestivalThread; onMessages
     </Conversation>
     <div className="mx-auto w-full max-w-3xl shrink-0 px-5 pt-2 pb-5">
       {error && <p role="alert" className="mb-3 text-sm text-destructive">{safeError(error.message)}</p>}
-      <PromptInput onSubmit={({ text }) => send(text)}>
-        <PromptInputTextarea ref={textarea} autoFocus aria-label="Your festival question" placeholder="Ask about the festival…" value={input} onChange={e => setInput(e.target.value)} className="min-h-20 max-h-40" />
-        <PromptInputFooter className="justify-end"><PromptInputSubmit status={status === "error" ? "ready" : status} onStop={() => { void stop(); textarea.current?.focus(); }} disabled={!busy && !input.trim()} title={busy ? "Stop answer" : "Send question"} /></PromptInputFooter>
+      <PromptInput onSubmit={({ text }) => send(text)} disabled={isStaticHost}>
+        <PromptInputTextarea ref={textarea} autoFocus aria-label="Your festival question" placeholder={isStaticHost ? "Q&A is unavailable on this static deployment" : "Ask about the festival…"} value={input} onChange={e => setInput(e.target.value)} className="min-h-20 max-h-40" disabled={isStaticHost} />
+        <PromptInputFooter className="justify-end"><PromptInputSubmit status={status === "error" ? "ready" : status} onStop={() => { void stop(); textarea.current?.focus(); }} disabled={isStaticHost || (!busy && !input.trim())} title={busy ? "Stop answer" : isStaticHost ? "Q&A unavailable on GitHub Pages" : "Send question"} /></PromptInputFooter>
       </PromptInput>
     </div>
   </>;
