@@ -79,7 +79,7 @@ function ChatWindow({ thread, onMessages }: { thread: FestivalThread; onMessages
   const { messages, sendMessage, status, stop, error, clearError } = useChat({
     id: thread.id,
     messages: thread.messages,
-    transport: transport ?? undefined,
+    ...(transport ? { transport } : {}),
     onFinish: ({ messages: finished }) => { onMessages(finished); textarea.current?.focus(); },
     onError: () => textarea.current?.focus(),
   });
@@ -117,7 +117,7 @@ function ChatWindow({ thread, onMessages }: { thread: FestivalThread; onMessages
     </Conversation>
     <div className="mx-auto w-full max-w-3xl shrink-0 px-5 pt-2 pb-5">
       {error && <p role="alert" className="mb-3 text-sm text-destructive">{safeError(error.message)}</p>}
-      <PromptInput onSubmit={({ text }) => send(text)} disabled={isStaticHost}>
+      <PromptInput onSubmit={({ text }) => send(text)}>
         <PromptInputTextarea ref={textarea} autoFocus aria-label="Your festival question" placeholder={isStaticHost ? "Q&A is unavailable on this static deployment" : "Ask about the festival…"} value={input} onChange={e => setInput(e.target.value)} className="min-h-20 max-h-40" disabled={isStaticHost} />
         <PromptInputFooter className="justify-end"><PromptInputSubmit status={status === "error" ? "ready" : status} onStop={() => { void stop(); textarea.current?.focus(); }} disabled={isStaticHost || (!busy && !input.trim())} title={busy ? "Stop answer" : isStaticHost ? "Q&A unavailable on GitHub Pages" : "Send question"} /></PromptInputFooter>
       </PromptInput>

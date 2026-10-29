@@ -14,3 +14,4 @@
 - AI access denials are persisted in a service-only safety-state table to prevent repeated blocked calls across restarts.
 - Keep the AI SDK core and its provider adapters on compatible provider-type versions; pin adapters when newer type contracts diverge.
 - Clip horizontal decorative overflow at the document boundary and give mobile fixed controls stable dimensions; animated accents must not resize the phone viewport.
+- Enforce visitor agreement in the shared root before mounting content; exempt policy pages and version browser-local acceptance so policy updates can require renewed agreement.
