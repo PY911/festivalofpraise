@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LegalContact, LegalPage, SocialLink } from "@/components/LegalPage";
 
-const DESC = "The terms for using the Festival of Praise @20 website, merchandise store and festival question assistant.";
+const DESC = "The terms for using the Festival of Praise @20 website and merchandise store.";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -32,9 +32,6 @@ function Terms() {
         <li>Payment and collection or delivery arrangements will be agreed with you directly by our team.</li>
         <li>Please give a correct name and phone number so we can reach you.</li>
       </ul>
-
-      <h2>"Ask the festival" assistant</h2>
-      <p>The question assistant uses AI to answer from information on this website. Answers may sometimes be incomplete or wrong. Official announcements on this site and our social pages take priority over any AI answer.</p>
 
       <h2>Acceptable use</h2>
       <ul>

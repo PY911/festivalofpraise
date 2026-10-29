@@ -9,9 +9,6 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Festival Q&A uses server-only AI Gateway Responses calls grounded in the current event and merchandise configuration, never customer orders, so answers track visible site information.
-- Chat threads use route-derived IDs and browser-local UIMessage history; chat content is not saved in the database.
-- AI access denials are persisted in a service-only safety-state table to prevent repeated blocked calls across restarts.
-- Keep the AI SDK core and its provider adapters on compatible provider-type versions; pin adapters when newer type contracts diverge.
+- Use Lovable hosting without a GitHub Pages deployment workflow or repository-specific base path, so the full-stack festival site stays on its supported host.
 - Clip horizontal decorative overflow at the document boundary and give mobile fixed controls stable dimensions; animated accents must not resize the phone viewport.
 - Enforce visitor agreement in the shared root before mounting content; exempt policy pages and version browser-local acceptance so policy updates can require renewed agreement.

@@ -12,12 +12,13 @@ describe("Visitor agreement", () => {
     expect(isPolicyPath("/terms")).toBe(true);
     expect(isPolicyPath("/privacy/")).toBe(true);
     expect(isPolicyPath("/")).toBe(false);
-    expect(isPolicyPath("/ask/example")).toBe(false);
+    expect(isPolicyPath("/merch/example")).toBe(false);
     expect(isPolicyPath("/terms/other")).toBe(false);
   });
   it("only recognizes agreement to the current policy version", () => {
     expect(hasCurrentAgreement(null)).toBe(false);
     expect(hasCurrentAgreement("2026-10-26")).toBe(false);
+    expect(hasCurrentAgreement("2026-10-29")).toBe(false);
     expect(hasCurrentAgreement(AGREEMENT_VERSION)).toBe(true);
   });
 });

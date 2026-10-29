@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
@@ -413,7 +413,6 @@ function Index() {
         <Share />
       </main>
       <Footer />
-      <Button asChild className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-[max(1.25rem,env(safe-area-inset-left))] z-40 h-12 w-44 shrink-0 rounded-full px-4 shadow-lg"><Link to="/ask"><MessageCircle />Ask the festival</Link></Button>
     </>
   );
 }
