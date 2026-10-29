@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { SOCIAL } from "@/lib/event";
 
 export function LegalPage({ title, updated, children }: { title: string; updated: string; children: ReactNode }) {
   return (
@@ -22,9 +23,21 @@ export function LegalContact() {
   return (
     <p>
       For questions, contact Bethlehem Society, Methodist Church Ghana, through our official pages:{" "}
-      <a className="font-semibold text-primary underline" href="https://www.facebook.com/BethlehemSociety" target="_blank" rel="noopener noreferrer">Facebook</a>,{" "}
-      <a className="font-semibold text-primary underline" href="https://www.instagram.com/bethlehemonline_/" target="_blank" rel="noopener noreferrer">Instagram</a> or{" "}
-      <a className="font-semibold text-primary underline" href="https://www.tiktok.com/@bethlehemonline" target="_blank" rel="noopener noreferrer">TikTok</a>.
+      {SOCIAL.map((s, i) => (
+        <span key={s.url}>
+          {i > 0 ? (i === SOCIAL.length - 1 ? " or " : ", ") : ""}
+          <a
+            className="font-semibold text-primary underline"
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {s.label}
+          </a>
+          {` (${s.handle})`}
+        </span>
+      ))}
+      .
     </p>
   );
 }
