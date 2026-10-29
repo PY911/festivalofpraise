@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Require agreement before site access and verify entry, policy reading and remembered acceptance
+- [x] Require agreement before site access and verify entry, policy reading and remembered acceptance
 - [x] Stabilize mobile Menu and Ask the festival buttons; check scrolling and menu navigation
 - [x] Festival AI questions with browser-saved separate conversations
 - [x] Repair chat type errors and verify visitor questions
