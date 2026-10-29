@@ -23,7 +23,7 @@ function Terms() {
       <p>By using this website you agree to these terms. The site is run by Bethlehem Society, Methodist Church Ghana for Festival of Praise @20.</p>
 
       <h2>Event information</h2>
-      <p>We work to keep event details accurate, but dates, times, venue arrangements and programme may change. Please check this site and our official social pages for the latest updates.</p>
+      <p>We work to keep event details accurate, but dates, times, venue arrangements and programme may change. Please check this site and our official social pages on <SocialLink label="Instagram" />, <SocialLink label="TikTok" /> or <SocialLink label="Facebook" /> for the latest updates.</p>
 
       <h2>Merchandise orders</h2>
       <ul>
@@ -46,7 +46,7 @@ function Terms() {
       <p>The Festival of Praise @20 name, logos, images and text belong to Bethlehem Society, Methodist Church Ghana. Please don't reuse them for commercial purposes without permission. Sharing the event with friends is welcome.</p>
 
       <h2>Links to other sites</h2>
-      <p>Links to WhatsApp, Google Maps, Facebook, Instagram and TikTok are provided for convenience. Those services have their own terms.</p>
+      <p>Links to services like WhatsApp, Google Maps, <SocialLink label="Facebook" />, <SocialLink label="Instagram" /> and <SocialLink label="TikTok" /> are provided for convenience. Those services have their own terms.</p>
 
       <h2>Limitation of responsibility</h2>
       <p>The site is provided "as is". To the extent the law allows, we are not responsible for losses arising from use of the site or reliance on its content.</p>
