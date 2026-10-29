@@ -1,4 +1,4 @@
-export const AGREEMENT_VERSION = "2026-10-29";
+export const AGREEMENT_VERSION = "2026-10-29-v2";
 export const AGREEMENT_STORAGE_KEY = "festival-praise-site-agreement";
 
 export function isPolicyPath(pathname: string) {
