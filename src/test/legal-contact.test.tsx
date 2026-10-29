@@ -14,6 +14,12 @@ describe("Legal page contact links", () => {
     }
   });
 
+  it("embeds each handle inside its link text", () => {
+    for (const s of SOCIAL) {
+      expect(html).toContain(`>${s.label} (${s.handle})</a>`);
+    }
+  });
+
   it("links nothing but the official social pages", () => {
     const official = SOCIAL.map((s) => s.url);
     expect(hrefs).toHaveLength(official.length);
