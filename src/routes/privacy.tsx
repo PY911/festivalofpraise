@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LegalContact, LegalPage } from "@/components/LegalPage";
+import { LegalContact, LegalPage, SocialLink } from "@/components/LegalPage";
 
 const DESC = "How the Festival of Praise @20 website collects, uses and protects your information.";
 
@@ -48,7 +48,7 @@ function Privacy() {
       <p>Order details are kept for as long as needed to complete orders and for reasonable record-keeping afterwards. You can clear your saved festival conversations at any time by deleting them in the chat or clearing your browser data.</p>
 
       <h2>Your rights</h2>
-      <p>You can ask to see, correct or delete the personal information we hold about you by contacting us.</p>
+      <p>You can ask to see, correct or delete the personal information we hold about you by contacting us on <SocialLink label="Instagram" />, <SocialLink label="TikTok" /> or <SocialLink label="Facebook" />.</p>
 
       <h2>Children</h2>
       <p>Children should place orders with the help of a parent or guardian.</p>
