@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Remove assistant, its pages, service and all app mentions
+- [ ] Disable GitHub Pages deployment; check remote cancellation access
 - [x] Require agreement before site access and verify entry, policy reading and remembered acceptance
 - [x] Stabilize mobile Menu and Ask the festival buttons; check scrolling and menu navigation
 - [x] Festival AI questions with browser-saved separate conversations
