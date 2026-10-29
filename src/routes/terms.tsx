@@ -19,7 +19,7 @@ export const Route = createFileRoute("/terms")({
 
 function Terms() {
   return (
-    <LegalPage title="Terms of Use" updated="26 October 2026">
+    <LegalPage title="Terms of Use" updated="29 October 2026">
       <p>By using this website you agree to these terms. The site is run by Bethlehem Society, Methodist Church Ghana for Festival of Praise @20.</p>
 
       <h2>Event information</h2>

@@ -19,7 +19,7 @@ export const Route = createFileRoute("/privacy")({
 
 function Privacy() {
   return (
-    <LegalPage title="Privacy Policy" updated="26 October 2026">
+    <LegalPage title="Privacy Policy" updated="29 October 2026">
       <p>This website is run by Bethlehem Society, Methodist Church Ghana ("we", "us") for Festival of Praise @20. This policy explains what information we collect and how we use it. We aim to handle personal data in line with Ghana's Data Protection Act, 2012 (Act 843).</p>
 
       <h2>Information we collect</h2>
