@@ -19,6 +19,22 @@ export function LegalPage({ title, updated, children }: { title: string; updated
   );
 }
 
+/** Embedded link to one of the church's official pages: the handle is part of the link text. */
+export function SocialLink({ label }: { label: string }) {
+  const s = SOCIAL.find((x) => x.label === label);
+  if (!s) return null;
+  return (
+    <a
+      className="font-semibold text-primary underline"
+      href={s.url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {s.label} ({s.handle})
+    </a>
+  );
+}
+
 export function LegalContact() {
   return (
     <p>
@@ -26,15 +42,7 @@ export function LegalContact() {
       {SOCIAL.map((s, i) => (
         <span key={s.url}>
           {i > 0 ? (i === SOCIAL.length - 1 ? " or " : ", ") : ""}
-          <a
-            className="font-semibold text-primary underline"
-            href={s.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {s.label}
-          </a>
-          {` (${s.handle})`}
+          <SocialLink label={s.label} />
         </span>
       ))}
       .

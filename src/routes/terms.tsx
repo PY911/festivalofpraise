@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LegalContact, LegalPage } from "@/components/LegalPage";
+import { LegalContact, LegalPage, SocialLink } from "@/components/LegalPage";
 
 const DESC = "The terms for using the Festival of Praise @20 website, merchandise store and festival question assistant.";
 
