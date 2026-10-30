@@ -1,10 +1,9 @@
 # Roadmap
-- [ ] Remove assistant, its pages, service and all app mentions
-- [ ] Disable GitHub Pages deployment; check remote cancellation access
+- [x] Remove assistant, its pages, service and all app mentions
+- [x] Remove GitHub Pages deployment workflow and repository-specific base path
+- [ ] Cancel already-running GitHub Pages deployments or unpublish existing Pages site (requires GitHub repository access; no connection available)
 - [x] Require agreement before site access and verify entry, policy reading and remembered acceptance
-- [x] Stabilize mobile Menu and Ask the festival buttons; check scrolling and menu navigation
-- [x] Festival AI questions with browser-saved separate conversations
-- [x] Repair chat type errors and verify visitor questions
+- [x] Stabilize mobile Menu button; check scrolling and menu navigation
 - [x] Merch store on the site (sample prices; orders saved + WhatsApp handoff)
 - [x] Live countdown to festival day
 - [x] Real social links (Instagram, TikTok, Facebook) wired in Share + footer
