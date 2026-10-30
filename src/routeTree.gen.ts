@@ -12,9 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
-import { Route as ApiFestivalChatRouteImport } from './routes/api/festival-chat'
-import { Route as AskIndexRouteImport } from './routes/ask.index'
-import { Route as AskThreadIdRouteImport } from './routes/ask.$threadId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,81 +28,35 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiFestivalChatRoute = ApiFestivalChatRouteImport.update({
-  id: '/api/festival-chat',
-  path: '/api/festival-chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AskIndexRoute = AskIndexRouteImport.update({
-  id: '/ask/',
-  path: '/ask/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AskThreadIdRoute = AskThreadIdRouteImport.update({
-  id: '/ask/$threadId',
-  path: '/ask/$threadId',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
-  '/api/festival-chat': typeof ApiFestivalChatRoute
-  '/ask/$threadId': typeof AskThreadIdRoute
-  '/ask/': typeof AskIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
-  '/api/festival-chat': typeof ApiFestivalChatRoute
-  '/ask/$threadId': typeof AskThreadIdRoute
-  '/ask': typeof AskIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
-  '/api/festival-chat': typeof ApiFestivalChatRoute
-  '/ask/$threadId': typeof AskThreadIdRoute
-  '/ask/': typeof AskIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/privacy'
-    | '/terms'
-    | '/api/festival-chat'
-    | '/ask/$threadId'
-    | '/ask/'
+  fullPaths: '/' | '/privacy' | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/privacy'
-    | '/terms'
-    | '/api/festival-chat'
-    | '/ask/$threadId'
-    | '/ask'
-  id:
-    | '__root__'
-    | '/'
-    | '/privacy'
-    | '/terms'
-    | '/api/festival-chat'
-    | '/ask/$threadId'
-    | '/ask/'
+  to: '/' | '/privacy' | '/terms'
+  id: '__root__' | '/' | '/privacy' | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
-  ApiFestivalChatRoute: typeof ApiFestivalChatRoute
-  AskThreadIdRoute: typeof AskThreadIdRoute
-  AskIndexRoute: typeof AskIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -131,27 +82,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/festival-chat': {
-      id: '/api/festival-chat'
-      path: '/api/festival-chat'
-      fullPath: '/api/festival-chat'
-      preLoaderRoute: typeof ApiFestivalChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ask/': {
-      id: '/ask/'
-      path: '/ask'
-      fullPath: '/ask/'
-      preLoaderRoute: typeof AskIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ask/$threadId': {
-      id: '/ask/$threadId'
-      path: '/ask/$threadId'
-      fullPath: '/ask/$threadId'
-      preLoaderRoute: typeof AskThreadIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -159,9 +89,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
-  ApiFestivalChatRoute: ApiFestivalChatRoute,
-  AskThreadIdRoute: AskThreadIdRoute,
-  AskIndexRoute: AskIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
