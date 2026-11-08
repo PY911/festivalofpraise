@@ -1,7 +1,7 @@
 import tshirt from "@/assets/merch-tshirt.jpg";
 import jersey from "@/assets/merch-jersey.jpg";
-import cloth from "@/assets/merch-cloth.jpg";
-import tumbler from "@/assets/merch-tumbler.jpg";
+import clothAsset from "@/assets/merch-cloth.jpg.asset.json";
+import tumblerAsset from "@/assets/merch-tumbler.jpg.asset.json";
 import mug from "@/assets/merch-mug.jpg";
 
 /** Merch pricing will be announced soon. */
