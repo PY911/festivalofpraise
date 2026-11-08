@@ -1,7 +1,7 @@
 import tshirt from "@/assets/merch-tshirt.jpg";
 import jersey from "@/assets/merch-jersey.jpg";
-import cloth from "@/assets/merch-cloth.jpg";
-import tumbler from "@/assets/merch-tumbler.jpg";
+import clothAsset from "@/assets/merch-cloth.jpg.asset.json";
+import tumblerAsset from "@/assets/merch-tumbler.jpg.asset.json";
 import mug from "@/assets/merch-mug.jpg";
 
 /** Merch pricing will be announced soon. */
@@ -15,8 +15,8 @@ export type Product = { id: string; name: string; price: number; image: string; 
 export const PRODUCTS: Product[] = [
   { id: "tshirt", name: "Festival T-Shirt", price: 0, image: tshirt, options: ["S", "M", "L", "XL", "XXL"] },
   { id: "jersey", name: "@20 Jersey", price: 0, image: jersey, options: ["S", "M", "L", "XL", "XXL"] },
-  { id: "cloth", name: "Anniversary Cloth (6 yards)", price: 0, image: cloth },
-  { id: "tumbler", name: "Mini Tumbler Cup", price: 0, image: tumbler },
+  { id: "cloth", name: "Anniversary Cloth (6 yards)", price: 0, image: clothAsset.url },
+  { id: "tumbler", name: "Mini Tumbler Cup", price: 0, image: tumblerAsset.url },
   { id: "mug", name: "Festival Mug", price: 0, image: mug },
 ];
 
