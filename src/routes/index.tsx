@@ -226,7 +226,7 @@ function About() {
         </Reveal>
         <Reveal delay={150}>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Festival of Praise @20 gathers the church and the wider community at Golf City - Tema for an open-air evening of worship,
+            Festival of Praise @ 20 gathers the church and the wider community at Golf City - Tema for an open-air evening of worship,
             thanksgiving and fellowship. As the afternoon light fades into night, we lift our voices together to celebrate two decades of praise
             and the faithfulness of God.
           </p>
@@ -388,11 +388,10 @@ function Footer() {
           </a>
         ))}
       </div>
-      <div className="mt-12 flex justify-center gap-6 text-sm font-semibold text-snow/75">
-        <Link to="/privacy" className="hover:text-sky">Privacy Policy</Link>
-        <Link to="/terms" className="hover:text-sky">Terms of Use</Link>
-      </div>
-      <p className="mt-4 text-center text-sm text-snow/60">Made with ❤️ by Bethlehem Methodist Media</p>
+      <p className="mt-12 text-center text-sm text-snow/60">
+        {" "}
+        Made with ❤️ by Bethlehem Methodist Media
+      </p>
       <button aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className={`fixed right-5 bottom-5 z-40 h-12 w-12 rounded-full bg-snow font-bold text-royal shadow-[var(--glow)] transition-all hover:-translate-y-1 ${show ? "opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}>↑</button>
     </footer>
