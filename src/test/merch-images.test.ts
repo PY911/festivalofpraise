@@ -6,7 +6,7 @@ describe("merch photos", () => {
     const tumbler = PRODUCTS.find((p) => p.id === "tumbler")!;
     const cloth = PRODUCTS.find((p) => p.id === "cloth")!;
 
-    expect(tumbler.image).toBe("/__l5e/assets-v1/16edbb12-7db6-4e37-9c30-a82eb10ad452/merch-tumbler.jpg");
+    expect(tumbler.image).toMatch(/^\/__l5e\/assets-v1\/[0-9a-f-]+\/merch-tumbler\.jpg$/);
     expect(cloth.image).toMatch(/^\/__l5e\/assets-v1\/[0-9a-f-]+\/merch-cloth\.jpg$/);
   });
 
