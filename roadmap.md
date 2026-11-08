@@ -9,5 +9,6 @@
 - [x] Real social links (Instagram, TikTok, Facebook) wired in Share + footer
 - [x] Terms and Privacy contact links read from the same official social list
 - [ ] Real merch prices/sizes (waiting on user)
+- [ ] Real photos for t-shirt, jersey and mug (waiting on user; tumbler + cloth done)
 - [ ] Order-desk WhatsApp number (waiting on user)
 - [ ] Online payment gateway (user will add later)
