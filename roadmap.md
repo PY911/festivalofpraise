@@ -8,7 +8,8 @@
 - [x] Live countdown to festival day
 - [x] Real social links (Instagram, TikTok, Facebook) wired in Share + footer
 - [x] Terms and Privacy contact links read from the same official social list
-- [ ] Real merch prices/sizes (waiting on user)
-- [ ] Real photos for t-shirt, jersey and mug (waiting on user; tumbler + cloth done)
+- [x] Mini tumbler cup price confirmed: GH₵200 (shown on its card and in the order total)
+- [ ] Prices for t-shirt, jersey, anniversary cloth and mug (waiting on user)
+- [ ] Real photos for t-shirt, jersey and mug (waiting on user; cloth + tumbler now use the user's own photos)
 - [ ] Order-desk WhatsApp number (waiting on user)
 - [ ] Online payment gateway (user will add later)

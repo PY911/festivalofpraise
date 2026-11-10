@@ -2,12 +2,12 @@ import { describe, expect, it } from "vitest";
 import { PRODUCTS } from "@/lib/merch";
 
 describe("merch photos", () => {
-  it("bundles the tumbler and cloth photos with the app", () => {
+  it("shows the real photos for the tumbler and the cloth", () => {
     const tumbler = PRODUCTS.find((p) => p.id === "tumbler")!;
     const cloth = PRODUCTS.find((p) => p.id === "cloth")!;
 
-    expect(tumbler.image).toMatch(/merch-tumbler(?:-[\w-]+)?\.jpg$/);
-    expect(cloth.image).toMatch(/merch-cloth(?:-[\w-]+)?\.jpg$/);
+    expect(tumbler.image).toMatch(/mini-tumbler-cup\.jpg$/);
+    expect(cloth.image).toMatch(/anniversary-cloth\.jpg$/);
   });
 
   it("keeps every product photo a real image source", () => {

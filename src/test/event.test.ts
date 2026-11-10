@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
-import { cartTotal, orderMessage } from "@/lib/merch";
+import { PRODUCTS, cartTotal, orderMessage, quotedTotal } from "@/lib/merch";
 
 describe("countdown", () => {
   it("counts to the start of festival day (27 March 2027, Accra) while no time is announced", () => {
@@ -45,8 +45,27 @@ describe("cart", () => {
     expect(cartTotal([{ id: "a", name: "A", qty: 2, price: 120 }, { id: "b", name: "B", qty: 1, price: 70 }])).toBe(310);
   });
 
+  it("prices the mini tumbler cup at GH₵200", () => {
+    expect(PRODUCTS.find((p) => p.id === "tumbler")!.price).toBe(200);
+  });
+
+  it("quotes a real total when every item in the order has a price", () => {
+    const lines = [{ id: "tumbler", name: "Mini Tumbler Cup", qty: 2, price: 200 }];
+    expect(quotedTotal(lines)).toBe(400);
+    expect(orderMessage("Jane", "024 123 4567", lines)).toContain("Total: GH₵400");
+  });
+
+  it("has no total while any item is still unpriced", () => {
+    const lines = [
+      { id: "tumbler", name: "Mini Tumbler Cup", qty: 1, price: 200 },
+      { id: "cloth", name: "Anniversary Cloth (6 yards)", qty: 1 },
+    ];
+    expect(quotedTotal(lines)).toBeNull();
+    expect(orderMessage("Jane", "024 123 4567", lines)).toContain("Total: To be announced soon");
+  });
+
   it("uses a to-be-announced total when merch pricing is not yet final", () => {
-    const message = orderMessage("Jane", "024 123 4567", [{ id: "a", name: "A", qty: 1, price: 0 }]);
+    const message = orderMessage("Jane", "024 123 4567", [{ id: "a", name: "A", qty: 1 }]);
 
     expect(message).toContain("Total: To be announced soon");
     expect(message).not.toContain("GHS");

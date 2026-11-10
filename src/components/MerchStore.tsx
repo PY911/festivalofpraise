@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { ORDER_WHATSAPP, PRICES_ARE_SAMPLE, PRODUCTS, cartTotal, orderMessage, type CartLine } from "@/lib/merch";
+import { ORDER_WHATSAPP, PRICE_NOTE, PRODUCTS, money, orderMessage, quotedTotal, type CartLine } from "@/lib/merch";
 
 export function MerchStore() {
   const [opts, setOpts] = useState<Record<string, string>>({});
@@ -34,7 +34,7 @@ export function MerchStore() {
     }
     setState("saving");
     const { error } = await supabase.from("merch_orders").insert({
-      customer_name: n, phone: ph, notes: notes.trim() || null, items: cart, total_ghs: cartTotal(cart),
+      customer_name: n, phone: ph, notes: notes.trim() || null, items: cart, total_ghs: quoted ?? 0,
     });
     if (error) { setState("error"); setMsg("Sorry, your order couldn't be saved. Please try again."); return; }
     setMsg(orderMessage(n, ph, cart, notes.trim()));
@@ -42,6 +42,7 @@ export function MerchStore() {
     setCart([]);
   };
 
+  const quoted = quotedTotal(cart);
   const waHref = `https://wa.me/${ORDER_WHATSAPP ?? ""}?text=${encodeURIComponent(msg)}`;
   const field = "w-full rounded-xl border bg-card px-4 py-3 outline-none focus:border-primary";
 
@@ -50,10 +51,7 @@ export function MerchStore() {
       <div className="mx-auto max-w-6xl">
         <p className="text-xs font-bold uppercase tracking-[0.4em] text-primary">Festival store</p>
         <h2 className="mt-3 text-4xl font-black text-royal sm:text-5xl">Order your @20 merch</h2>
-        <p className="mt-3 text-muted-foreground">
-          Place your order now — pricing will be announced soon.
-          {!PRICES_ARE_SAMPLE && <span className="ml-1 font-semibold text-primary">The final price list will be shared soon.</span>}
-        </p>
+        <p className="mt-3 text-muted-foreground">{PRICE_NOTE}</p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PRODUCTS.map((p) => (
@@ -64,9 +62,13 @@ export function MerchStore() {
               <div className="p-5">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="text-lg font-bold">{p.name}</h3>
-                  <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-bold uppercase tracking-wide text-primary">TBA</span>
+                  <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-bold uppercase tracking-wide text-primary">
+                    {p.price === undefined ? "TBA" : money(p.price)}
+                  </span>
                 </div>
-                <p className="mt-3 text-sm font-semibold text-muted-foreground">Price to be announced soon</p>
+                <p className="mt-3 text-sm font-semibold text-muted-foreground">
+                  {p.price === undefined ? "Price to be announced soon" : `${money(p.price)} each`}
+                </p>
                 <div className="mt-4 flex gap-2">
                   {p.options && (
                     <select aria-label={`${p.name} size`} className="rounded-full border bg-card px-3 py-2 text-sm font-semibold"
@@ -95,11 +97,11 @@ export function MerchStore() {
                       <button aria-label="Decrease" onClick={() => setQty(i, l.qty - 1)} className="h-8 w-8 rounded-full border font-bold">−</button>
                       <span className="w-6 text-center">{l.qty}</span>
                       <button aria-label="Increase" onClick={() => setQty(i, l.qty + 1)} className="h-8 w-8 rounded-full border font-bold">+</button>
-                      <span className="w-24 text-right font-bold text-muted-foreground">TBA</span>
+                      <span className="w-24 text-right font-bold text-muted-foreground">{l.price === undefined ? "TBA" : money(l.price * l.qty)}</span>
                     </span>
                   </li>
                 ))}
-                <li className="flex justify-between py-3 text-lg font-black"><span>Total</span><span className="text-muted-foreground">To be announced soon</span></li>
+                <li className="flex justify-between py-3 text-lg font-black"><span>Total</span><span className={quoted === null ? "text-muted-foreground" : "text-royal"}>{quoted === null ? "To be announced soon" : money(quoted)}</span></li>
               </ul>
             )}
           </div>
