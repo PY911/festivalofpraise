@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { ORDER_WHATSAPP, PRICES_ARE_SAMPLE, PRODUCTS, cartTotal, orderMessage, type CartLine } from "@/lib/merch";
+import { ORDER_WHATSAPP, PRICE_NOTE, PRODUCTS, money, orderMessage, quotedTotal, type CartLine } from "@/lib/merch";
 
 export function MerchStore() {
   const [opts, setOpts] = useState<Record<string, string>>({});
