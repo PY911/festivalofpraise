@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { ORDER_WHATSAPP, PRICE_NOTE, PRODUCTS, money, orderMessage, quotedTotal, type CartLine } from "@/lib/merch";
+import { ORDER_WHATSAPP, PRICE_NOTE, PRODUCTS, fromPrice, money, orderMessage, priceFor, quotedTotal, type CartLine } from "@/lib/merch";
 
 export function MerchStore() {
   const [opts, setOpts] = useState<Record<string, string>>({});
@@ -13,11 +13,12 @@ export function MerchStore() {
 
   const add = (id: string) => {
     const p = PRODUCTS.find((x) => x.id === id)!;
-    const option = p.options ? opts[id] ?? p.options[1] : undefined;
+    const option = p.options ? opts[id] ?? p.options[0] : undefined;
+    const price = priceFor(p, option);
     setCart((c) => {
       const i = c.findIndex((l) => l.id === id && l.option === option);
       if (i >= 0) return c.map((l, j) => (j === i ? { ...l, qty: l.qty + 1 } : l));
-      const line: CartLine = option === undefined ? { id, name: p.name, qty: 1, price: p.price } : { id, name: p.name, option, qty: 1, price: p.price };
+      const line: CartLine = option === undefined ? { id, name: p.name, qty: 1, price } : { id, name: p.name, option, qty: 1, price };
       return [...c, line];
     });
     setState("idle");
@@ -63,11 +64,16 @@ export function MerchStore() {
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="text-lg font-bold">{p.name}</h3>
                   <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-bold uppercase tracking-wide text-primary">
-                    {p.price === undefined ? "TBA" : money(p.price)}
+                    {fromPrice(p) === undefined ? "TBA" : p.optionPrices ? `From ${money(fromPrice(p)!)}` : money(fromPrice(p)!)}
                   </span>
                 </div>
                 <p className="mt-3 text-sm font-semibold text-muted-foreground">
-                  {p.price === undefined ? "Price to be announced soon" : `${money(p.price)} each`}
+                  {p.optionPrices
+                    ? Object.entries(p.optionPrices).map(([o, pr]) => `${o}: ${money(pr)}`).join(" · ")
+                    : p.price === undefined
+                      ? "Price to be announced soon"
+                      : `${money(p.price)} each`}
+                  {p.note ? ` · ${p.note}` : ""}
                 </p>
                 <div className="mt-4 flex gap-2">
                   {p.options && (
