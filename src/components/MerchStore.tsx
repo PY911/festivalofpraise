@@ -13,7 +13,7 @@ export function MerchStore() {
 
   const add = (id: string) => {
     const p = PRODUCTS.find((x) => x.id === id)!;
-    const option = p.options ? opts[id] ?? p.options[0] : undefined;
+    const option = p.options ? opts[id] ?? (p.optionPrices ? p.options[0] : p.options[1]) : undefined;
     const price = priceFor(p, option);
     setCart((c) => {
       const i = c.findIndex((l) => l.id === id && l.option === option);
