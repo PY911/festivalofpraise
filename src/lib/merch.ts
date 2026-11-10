@@ -2,23 +2,59 @@ import tshirt from "@/assets/merch-tshirt.jpg";
 import jersey from "@/assets/merch-jersey.jpg";
 import clothPhoto from "@/assets/anniversary-cloth.jpg.asset.json";
 import tumblerPhoto from "@/assets/mini-tumbler-cup.jpg.asset.json";
+import lapelPin from "@/assets/merch-lapel-pin.jpg";
 import mug from "@/assets/merch-mug.jpg";
 
 /** Order-desk WhatsApp number in international format without "+" (e.g. "233241234567"). Null = buyer picks the contact. */
 export const ORDER_WHATSAPP: string | null = null;
 
-export type Product = { id: string; name: string; image: string; price?: number; options?: string[] };
+export type Product = {
+  id: string;
+  name: string;
+  image: string;
+  price?: number;
+  options?: string[];
+  /** Per-option prices (e.g. cloth sold by the yard). Falls back to `price` when absent. */
+  optionPrices?: Record<string, number>;
+  /** Extra line shown under the price (e.g. "Pre-order"). */
+  note?: string;
+};
 
 /** A product with no price yet shows "to be announced" instead of a number. */
 export const PRODUCTS: Product[] = [
   { id: "tshirt", name: "Festival T-Shirt", image: tshirt, options: ["S", "M", "L", "XL", "XXL"] },
-  { id: "jersey", name: "@20 Jersey", image: jersey, options: ["S", "M", "L", "XL", "XXL"] },
-  { id: "cloth", name: "Anniversary Cloth (6 yards)", image: clothPhoto.url },
+  { id: "jersey", name: "@20 Jersey", image: jersey, options: ["S", "M", "L", "XL", "XXL"], note: "Pre-order" },
+  {
+    id: "cloth",
+    name: "Anniversary Cloth",
+    image: clothPhoto.url,
+    options: ["1 yard", "2 yards", "4 yards"],
+    optionPrices: { "1 yard": 80, "2 yards": 150, "4 yards": 300 },
+  },
   { id: "tumbler", name: "Mini Tumbler Cup", image: tumblerPhoto.url, price: 200 },
+  {
+    id: "lapel-pin",
+    name: "Air Refresher / Lapel Pin",
+    image: lapelPin,
+    options: ["1 piece", "2 pieces"],
+    optionPrices: { "1 piece": 30, "2 pieces": 50 },
+  },
   { id: "mug", name: "Festival Mug", image: mug },
 ];
 
 export type CartLine = { id: string; name: string; option?: string; qty: number; price?: number | undefined };
+
+/** Price of one unit of a product, honouring per-option prices. Undefined while unpriced. */
+export function priceFor(p: Product, option?: string): number | undefined {
+  if (p.optionPrices && option !== undefined) return p.optionPrices[option];
+  return p.price;
+}
+
+/** Lowest advertised price of a product, for the card badge. */
+export function fromPrice(p: Product): number | undefined {
+  if (p.optionPrices) return Math.min(...Object.values(p.optionPrices));
+  return p.price;
+}
 
 export const money = (n: number) => `GH₵${n.toLocaleString("en-US")}`;
 
@@ -28,11 +64,11 @@ export const cartTotal = (lines: CartLine[]) => lines.reduce((s, l) => s + l.qty
 export const quotedTotal = (lines: CartLine[]) =>
   lines.length && lines.every((l) => l.price !== undefined) ? cartTotal(lines) : null;
 
-const priced = PRODUCTS.filter((p) => p.price !== undefined);
+const unpriced = PRODUCTS.filter((p) => fromPrice(p) === undefined);
 
-export const PRICE_NOTE = priced.length
-  ? `Place your order now — ${priced.map((p) => `${p.name} is ${money(p.price!)}`).join(", ")}. Prices for the other items will be announced soon.`
-  : "Place your order now — pricing will be announced soon.";
+export const PRICE_NOTE = unpriced.length
+  ? `Place your order now — prices for the ${unpriced.map((p) => p.name).join(" and ")} will be announced soon.`
+  : "Place your order now — all prices are confirmed.";
 
 export function orderMessage(name: string, phone: string, lines: CartLine[], notes?: string) {
   const rows = lines.map((l) => `• ${l.qty} × ${l.name}${l.option ? ` (${l.option})` : ""}`);
