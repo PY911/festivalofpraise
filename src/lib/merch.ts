@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
   { id: "mug", name: "Festival Mug", image: mug },
 ];
 
-export type CartLine = { id: string; name: string; option?: string; qty: number; price?: number };
+export type CartLine = { id: string; name: string; option?: string; qty: number; price?: number | undefined };
 
 export const money = (n: number) => `GH₵${n.toLocaleString("en-US")}`;
 
