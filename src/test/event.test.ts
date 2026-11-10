@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
-import { PRODUCTS, cartTotal, orderMessage, quotedTotal } from "@/lib/merch";
+import { PRODUCTS, cartTotal, orderMessage, priceFor, quotedTotal } from "@/lib/merch";
 
 describe("countdown", () => {
   it("counts to the start of festival day (27 March 2027, Accra) while no time is announced", () => {
@@ -47,6 +47,25 @@ describe("cart", () => {
 
   it("prices the mini tumbler cup at GH₵200", () => {
     expect(PRODUCTS.find((p) => p.id === "tumbler")!.price).toBe(200);
+  });
+
+  it("sells the anniversary cloth by the yard at 80 / 150 / 300", () => {
+    const cloth = PRODUCTS.find((p) => p.id === "cloth")!;
+    expect(priceFor(cloth, "1 yard")).toBe(80);
+    expect(priceFor(cloth, "2 yards")).toBe(150);
+    expect(priceFor(cloth, "4 yards")).toBe(300);
+  });
+
+  it("sells the air refresher / lapel pin at 30 each or 50 for two", () => {
+    const pin = PRODUCTS.find((p) => p.id === "lapel-pin")!;
+    expect(priceFor(pin, "1 piece")).toBe(30);
+    expect(priceFor(pin, "2 pieces")).toBe(50);
+  });
+
+  it("keeps the jersey as an unpriced pre-order", () => {
+    const jersey = PRODUCTS.find((p) => p.id === "jersey")!;
+    expect(jersey.price).toBeUndefined();
+    expect(jersey.note).toBe("Pre-order");
   });
 
   it("quotes a real total when every item in the order has a price", () => {
