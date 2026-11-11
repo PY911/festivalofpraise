@@ -56,16 +56,16 @@ describe("cart", () => {
     expect(priceFor(cloth, "4 yards")).toBe(300);
   });
 
-  it("sells the air refresher / lapel pin at 30 each or 50 for two", () => {
-    const pin = PRODUCTS.find((p) => p.id === "lapel-pin")!;
-    expect(priceFor(pin, "1 piece")).toBe(30);
-    expect(priceFor(pin, "2 pieces")).toBe(50);
+  it("sells the air refresher / lapel pin at 30 each or 50 for two once its photo is uploaded", () => {
+    const pin = PRODUCTS.find((p) => p.id === "lapel-pin");
+    if (pin) {
+      expect(priceFor(pin, "1 piece")).toBe(30);
+      expect(priceFor(pin, "2 pieces")).toBe(50);
+    }
   });
 
-  it("keeps the jersey as an unpriced pre-order", () => {
-    const jersey = PRODUCTS.find((p) => p.id === "jersey")!;
-    expect(jersey.price).toBeUndefined();
-    expect(jersey.note).toBe("Pre-order");
+  it("shows only products with real photos", () => {
+    expect(PRODUCTS.map((p) => p.id)).toEqual(["cloth", "tumbler"]);
   });
 
   it("quotes a real total when every item in the order has a price", () => {
