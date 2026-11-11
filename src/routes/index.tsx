@@ -388,7 +388,11 @@ function Footer() {
           </a>
         ))}
       </div>
-      <p className="mt-12 text-center text-sm text-snow/60">
+      <nav aria-label="Legal" className="mt-10 flex justify-center gap-6 text-sm font-semibold">
+        <Link to="/privacy" className="text-snow/75 underline-offset-4 transition hover:text-sky hover:underline">Privacy Policy</Link>
+        <Link to="/terms" className="text-snow/75 underline-offset-4 transition hover:text-sky hover:underline">Terms of Use</Link>
+      </nav>
+      <p className="mt-6 text-center text-sm text-snow/60">
         {" "}
         Made with ❤️ by Bethlehem Methodist Media
       </p>
