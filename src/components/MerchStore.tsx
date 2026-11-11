@@ -82,7 +82,7 @@ export function MerchStore() {
                           }`}
                         >
                           <span className="block text-xs font-semibold text-muted-foreground">{o}</span>
-                          <span className={`block text-sm font-black ${selected ? "text-primary" : ""}`}>{money(p.optionPrices![o])}</span>
+                          <span className={`block text-sm font-black ${selected ? "text-primary" : ""}`}>{money(p.optionPrices![o]!)}</span>
                         </button>
                       );
                     })}
