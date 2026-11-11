@@ -13,7 +13,6 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SiteAgreement } from "@/components/SiteAgreement";
 
 function NotFoundComponent() {
   return (
@@ -116,12 +115,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const pathname = useLocation({ select: location => location.pathname });
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <SiteAgreement pathname={pathname}><Outlet /></SiteAgreement>
+      <Outlet />
     </QueryClientProvider>
   );
 }
