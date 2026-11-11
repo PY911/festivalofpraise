@@ -1,5 +1,5 @@
-import clothPhoto from "@/assets/anniversary-cloth.jpg.asset.json";
-import tumblerPhoto from "@/assets/mini-tumbler-cup.jpg.asset.json";
+import clothPhoto from "@/assets/anniversary-cloth.jpg";
+import tumblerPhoto from "@/assets/mini-tumbler-cup.jpg";
 
 /** Order-desk WhatsApp number in international format without "+" (e.g. "233241234567"). Null = buyer picks the contact. */
 export const ORDER_WHATSAPP: string | null = null;
@@ -25,11 +25,11 @@ export const PRODUCTS: Product[] = [
   {
     id: "cloth",
     name: "Anniversary Cloth",
-    image: clothPhoto.url,
+    image: clothPhoto,
     options: ["1 yard", "2 yards", "4 yards"],
     optionPrices: { "1 yard": 80, "2 yards": 150, "4 yards": 300 },
   },
-  { id: "tumbler", name: "Mini Tumbler Cup", image: tumblerPhoto.url, price: 200 },
+  { id: "tumbler", name: "Mini Tumbler Cup", image: tumblerPhoto, price: 200 },
 ];
 
 export type CartLine = { id: string; name: string; option?: string; qty: number; price?: number | undefined };
