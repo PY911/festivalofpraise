@@ -1,9 +1,5 @@
-import tshirt from "@/assets/merch-tshirt.jpg";
-import jersey from "@/assets/merch-jersey.jpg";
 import clothPhoto from "@/assets/anniversary-cloth.jpg.asset.json";
 import tumblerPhoto from "@/assets/mini-tumbler-cup.jpg.asset.json";
-import lapelPin from "@/assets/merch-lapel-pin.jpg";
-import mug from "@/assets/merch-mug.jpg";
 
 /** Order-desk WhatsApp number in international format without "+" (e.g. "233241234567"). Null = buyer picks the contact. */
 export const ORDER_WHATSAPP: string | null = null;
@@ -20,10 +16,12 @@ export type Product = {
   note?: string;
 };
 
-/** A product with no price yet shows "to be announced" instead of a number. */
+/**
+ * Only items with real photos are listed — t-shirt, jersey, mug and
+ * air refresher / lapel pin return once their photos are uploaded.
+ * A product with no price yet shows "to be announced" instead of a number.
+ */
 export const PRODUCTS: Product[] = [
-  { id: "tshirt", name: "Festival T-Shirt", image: tshirt, options: ["S", "M", "L", "XL", "XXL"] },
-  { id: "jersey", name: "@20 Jersey", image: jersey, options: ["S", "M", "L", "XL", "XXL"], note: "Pre-order" },
   {
     id: "cloth",
     name: "Anniversary Cloth",
@@ -32,14 +30,6 @@ export const PRODUCTS: Product[] = [
     optionPrices: { "1 yard": 80, "2 yards": 150, "4 yards": 300 },
   },
   { id: "tumbler", name: "Mini Tumbler Cup", image: tumblerPhoto.url, price: 200 },
-  {
-    id: "lapel-pin",
-    name: "Air Refresher / Lapel Pin",
-    image: lapelPin,
-    options: ["1 piece", "2 pieces"],
-    optionPrices: { "1 piece": 30, "2 pieces": 50 },
-  },
-  { id: "mug", name: "Festival Mug", image: mug },
 ];
 
 export type CartLine = { id: string; name: string; option?: string; qty: number; price?: number | undefined };
@@ -68,7 +58,7 @@ const unpriced = PRODUCTS.filter((p) => fromPrice(p) === undefined);
 
 export const PRICE_NOTE = unpriced.length
   ? `Place your order now — prices for the ${unpriced.map((p) => p.name).join(" and ")} will be announced soon.`
-  : "Place your order now — all prices are confirmed.";
+  : "Place your order now — more items (t-shirt, jersey, mug, lapel pin) are coming soon.";
 
 export function orderMessage(name: string, phone: string, lines: CartLine[], notes?: string) {
   const rows = lines.map((l) => `• ${l.qty} × ${l.name}${l.option ? ` (${l.option})` : ""}`);
