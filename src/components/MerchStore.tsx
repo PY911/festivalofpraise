@@ -67,16 +67,34 @@ export function MerchStore() {
                     {fromPrice(p) === undefined ? "TBA" : p.optionPrices ? `From ${money(fromPrice(p)!)}` : money(fromPrice(p)!)}
                   </span>
                 </div>
-                <p className="mt-3 text-sm font-semibold text-muted-foreground">
-                  {p.optionPrices
-                    ? Object.entries(p.optionPrices).map(([o, pr]) => `${o}: ${money(pr)}`).join(" · ")
-                    : p.price === undefined
-                      ? "Price to be announced soon"
-                      : `${money(p.price)} each`}
-                  {p.note ? ` · ${p.note}` : ""}
-                </p>
+                {p.optionPrices ? (
+                  <div className="mt-3 flex flex-wrap gap-2" role="radiogroup" aria-label={`${p.name} options`}>
+                    {p.options!.map((o) => {
+                      const selected = (opts[p.id] ?? p.options![0]) === o;
+                      return (
+                        <button
+                          key={o}
+                          role="radio"
+                          aria-checked={selected}
+                          onClick={() => setOpts({ ...opts, [p.id]: o })}
+                          className={`rounded-2xl border px-3 py-2 text-left transition active:scale-95 ${
+                            selected ? "border-primary bg-primary/10 shadow-sm" : "bg-card hover:border-primary/50"
+                          }`}
+                        >
+                          <span className="block text-xs font-semibold text-muted-foreground">{o}</span>
+                          <span className={`block text-sm font-black ${selected ? "text-primary" : ""}`}>{money(p.optionPrices![o]!)}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="mt-3 text-sm font-semibold text-muted-foreground">
+                    {p.price === undefined ? "Price to be announced soon" : money(p.price)}
+                    {p.note ? ` · ${p.note}` : ""}
+                  </p>
+                )}
                 <div className="mt-4 flex gap-2">
-                  {p.options && (
+                  {p.options && !p.optionPrices && (
                     <select aria-label={`${p.name} size`} className="rounded-full border bg-card px-3 py-2 text-sm font-semibold"
                       value={opts[p.id] ?? p.options[1]} onChange={(e) => setOpts({ ...opts, [p.id]: e.target.value })}>
                       {p.options.map((o) => <option key={o}>{o}</option>)}
