@@ -49,11 +49,12 @@ describe("cart", () => {
     expect(PRODUCTS.find((p) => p.id === "tumbler")!.price).toBe(200);
   });
 
-  it("sells the anniversary cloth by the yard at 80 / 150 / 300", () => {
+  it("sells the anniversary cloth by the yard at the updated prices", () => {
     const cloth = PRODUCTS.find((p) => p.id === "cloth")!;
-    expect(priceFor(cloth, "1 yard")).toBe(80);
-    expect(priceFor(cloth, "2 yards")).toBe(150);
-    expect(priceFor(cloth, "4 yards")).toBe(300);
+    expect(priceFor(cloth, "1 yard")).toBe(60);
+    expect(priceFor(cloth, "2 yards")).toBe(100);
+    expect(priceFor(cloth, "4 yards")).toBe(200);
+    expect(priceFor(cloth, "6 yards")).toBe(300);
   });
 
   it("sells the air refresher / lapel pin at 30 each or 50 for two once its photo is uploaded", () => {

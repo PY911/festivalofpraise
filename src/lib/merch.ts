@@ -26,8 +26,8 @@ export const PRODUCTS: Product[] = [
     id: "cloth",
     name: "Anniversary Cloth",
     image: clothPhoto,
-    options: ["1 yard", "2 yards", "4 yards"],
-    optionPrices: { "1 yard": 80, "2 yards": 150, "4 yards": 300 },
+    options: ["1 yard", "2 yards", "4 yards", "6 yards"],
+    optionPrices: { "1 yard": 60, "2 yards": 100, "4 yards": 200, "6 yards": 300 },
   },
   { id: "tumbler", name: "Mini Tumbler Cup", image: tumblerPhoto, price: 200 },
 ];

@@ -19,7 +19,7 @@ export const Route = createFileRoute("/terms")({
 
 function Terms() {
   return (
-    <LegalPage title="Terms of Use" updated="29 October 2026">
+    <LegalPage title="Terms of Use" updated="11 November 2026">
       <p>By using this website you agree to these terms. The site is run by Bethlehem Society, Methodist Church Ghana for Festival of Praise @20.</p>
 
       <h2>Event information</h2>
@@ -46,7 +46,7 @@ function Terms() {
       <p>Links to services like WhatsApp, Google Maps, <SocialLink label="Facebook" />, <SocialLink label="Instagram" /> and <SocialLink label="TikTok" /> are provided for convenience. Those services have their own terms.</p>
 
       <h2>Limitation of responsibility</h2>
-      <p>The site is provided "as is". To the extent the law allows, we are not responsible for losses arising from use of the site or reliance on its content.</p>
+      <p>We aim to keep the website and event information up to date, but the site may occasionally be unavailable and event details may change. To the extent permitted by Ghanaian law, we are not responsible for losses caused by temporary website outages or reliance on outdated event information. Your rights under applicable law continue to apply.</p>
 
       <h2>Governing law</h2>
       <p>These terms are governed by the laws of the Republic of Ghana.</p>
