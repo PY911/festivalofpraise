@@ -380,14 +380,6 @@ function Footer() {
           <p className="text-snow/75">Organized by {EVENT.organizer}</p>
         </div>
       </div>
-      <div className="mx-auto mt-8 flex max-w-6xl flex-wrap justify-center gap-3 md:justify-start">
-        {SOCIAL.map((s) => (
-          <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={`${EVENT.organizer} on ${s.label}`}
-            className="glass flex h-11 w-11 items-center justify-center rounded-full text-snow transition hover:-translate-y-0.5 hover:text-sky active:scale-95">
-            <span className="h-5 w-5">{ICONS[s.label]}</span>
-          </a>
-        ))}
-      </div>
       <nav aria-label="Legal" className="mt-10 flex justify-center gap-6 text-sm font-semibold">
         <Link to="/privacy" className="text-snow/75 underline-offset-4 transition hover:text-sky hover:underline">Privacy Policy</Link>
         <Link to="/terms" className="text-snow/75 underline-offset-4 transition hover:text-sky hover:underline">Terms of Use</Link>
