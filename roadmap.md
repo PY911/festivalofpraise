@@ -9,7 +9,9 @@
 - [x] Real social links (Instagram, TikTok, Facebook) wired in Share + footer
 - [x] Terms and Privacy contact links read from the same official social list
 - [x] Mini tumbler cup price confirmed: GH₵200 (shown on its card and in the order total)
-- [ ] Prices for t-shirt, jersey, anniversary cloth and mug (waiting on user)
-- [ ] Real photos for t-shirt, jersey and mug (waiting on user; cloth + tumbler now use the user's own photos)
+- [x] Cloth prices confirmed: 1 yard GH₵80, 2 yards GH₵150, 4 yards GH₵300 (sold by the yard)
+- [x] Removed all generated product images; store shows only real photos (cloth + tumbler)
+- [ ] Real photos for t-shirt, jersey, mug and air refresher / lapel pin (user will upload; lapel pin prices ready: GH₵30 each, GH₵50 for two; jersey is pre-order)
+- [ ] Prices for t-shirt and mug (waiting on user)
 - [ ] Order-desk WhatsApp number (waiting on user)
 - [ ] Online payment gateway (user will add later)
