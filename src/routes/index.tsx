@@ -208,7 +208,7 @@ function Hero() {
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-16 text-center">
         <p className="animate-rise text-xs font-bold uppercase tracking-[0.4em] text-sky">
-          Bethlehem Methodist Church presents
+          Bethlehem Methodist Church, Bethlehem presents
         </p>
         <h1
           className="animate-rise mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center sm:gap-8"
