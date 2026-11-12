@@ -2,7 +2,7 @@ export const EVENT = {
   name: "Festival of Praise @20",
   tagline: "20 Years of Praise",
   campaign: "Two Decades of Praise. One Unforgettable Celebration.",
-  dateLabel: "Saturday, 27 March 2027",
+  dateLabel: "Saturday, 27th March 2027",
   dateNote: "Easter Saturday",
   date: "2027-03-27",
   venue: "Bethlehem, Off Golf City Main Road",
