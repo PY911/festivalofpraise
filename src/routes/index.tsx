@@ -373,8 +373,14 @@ function About() {
 }
 
 function Details() {
-  const items = [
-    ["Date", `${EVENT.dateLabel} (${EVENT.dateNote})`],
+  const items: [string, ReactNode][] = [
+    [
+      "Date",
+      <>
+        <span>{EVENT.dateLabel}</span>
+        <span className="mt-1 block text-sm font-semibold text-primary/80">{EVENT.dateNote}</span>
+      </>,
+    ],
     ["Venue", EVENT.venue],
     ["Programme", EVENT.programme],
     ["Start time", "Official Start Time to Be Announced"],
@@ -386,12 +392,12 @@ function Details() {
         <Reveal>
           <h2 className="text-4xl font-black text-royal sm:text-5xl">Event details</h2>
         </Reveal>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map(([k, v], i) => (
             <Reveal key={k} delay={i * 90}>
               <div className="h-full rounded-2xl border bg-card p-6 transition hover:-translate-y-1 hover:shadow-xl">
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">{k}</p>
-                <p className="mt-2 text-lg font-semibold">{v}</p>
+                <div className="mt-2 text-lg font-semibold">{v}</div>
               </div>
             </Reveal>
           ))}
