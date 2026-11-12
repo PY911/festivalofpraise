@@ -211,7 +211,7 @@ function Hero() {
           Bethlehem Methodist Church presents
         </p>
         <h1
-          className="animate-rise mt-6"
+          className="animate-rise mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center sm:gap-8"
           style={{ animationDelay: ".2s" }}
         >
           <img
@@ -219,25 +219,23 @@ function Hero() {
             alt="Festival of Praise"
             width={1412}
             height={656}
-            className="mx-auto h-auto w-[18rem] sm:w-[28rem] lg:w-[34rem]"
+            className="h-auto w-[17rem] drop-shadow-[0_0_28px_color-mix(in_oklab,var(--sky)_55%,transparent)] sm:w-[26rem] lg:w-[32rem]"
+          />
+          <span
+            aria-hidden="true"
+            className="h-px w-24 bg-gradient-to-r from-transparent via-sky to-transparent sm:h-32 sm:w-px sm:bg-gradient-to-b"
+          />
+          <img
+            src={twentyEmblem.url}
+            alt="20 Years Anniversary"
+            width={1920}
+            height={1465}
+            className="animate-rise h-auto w-32 drop-shadow-[0_0_24px_color-mix(in_oklab,var(--sky)_50%,transparent)] sm:w-40 lg:w-48"
+            style={{ animationDelay: ".8s" }}
           />
         </h1>
-        <img
-          src={twentyEmblem.url}
-          alt="20 Years Anniversary"
-          width={1920}
-          height={1465}
-          className="animate-rise mx-auto mt-4 h-auto w-40 sm:w-56"
-          style={{ animationDelay: ".8s" }}
-        />
         <p
-          className="animate-rise font-display text-lg font-bold uppercase tracking-[0.3em] text-sky"
-          style={{ animationDelay: "1.8s" }}
-        >
-          20 Years of Praise
-        </p>
-        <p
-          className="animate-rise mx-auto mt-5 max-w-2xl text-lg text-snow/85 sm:text-xl"
+          className="animate-rise mx-auto mt-8 max-w-2xl text-lg text-snow/85 sm:text-xl"
           style={{ animationDelay: "2.1s" }}
         >
           {EVENT.campaign}
