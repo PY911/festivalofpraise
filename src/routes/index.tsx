@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg";
-import fopLogo from "@/assets/festival-of-praise-logo-white.png.asset.json";
-import twentyEmblem from "@/assets/twenty-years-emblem-white.webp.asset.json";
+import fopLogo from "@/assets/festival-of-praise-logo-white.png";
+import twentyEmblem from "@/assets/twenty-years-emblem-white.webp";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
