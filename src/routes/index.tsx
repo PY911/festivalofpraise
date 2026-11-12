@@ -206,7 +206,7 @@ function Hero() {
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-16 text-center">
-        <p className="animate-rise text-xs font-bold uppercase tracking-[0.4em] text-sky">
+        <p className="animate-rise text-sm font-bold uppercase tracking-[0.22em] text-sky sm:text-base sm:tracking-[0.3em]">
           Bethlehem Methodist Church, Bethlehem presents
         </p>
         <h1
