@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg";
-import fopLogo from "@/assets/festival-of-praise-logo-white.png";
-import twentyEmblem from "@/assets/twenty-years-emblem-white.webp";
+import anniversaryLockup from "@/assets/festival-of-praise-anniversary-lockup.png";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
@@ -211,27 +210,15 @@ function Hero() {
           Bethlehem Methodist Church, Bethlehem presents
         </p>
         <h1
-          className="animate-rise mt-8 flex flex-col items-center gap-5 lg:flex-row lg:justify-center lg:gap-8"
+          className="animate-rise mx-auto mt-8 w-full max-w-6xl"
           style={{ animationDelay: ".2s" }}
         >
           <img
-            src={fopLogo}
-            alt="Festival of Praise"
-            width={1412}
-            height={656}
-            className="h-auto w-[17rem] drop-shadow-[0_0_28px_color-mix(in_oklab,var(--sky)_55%,transparent)] sm:w-[28rem] lg:w-[38rem]"
-          />
-          <span
-            aria-hidden="true"
-            className="h-px w-24 bg-gradient-to-r from-transparent via-sky to-transparent lg:h-32 lg:w-px lg:bg-gradient-to-b"
-          />
-          <img
-            src={twentyEmblem}
-            alt="20 Years Anniversary"
-            width={1920}
-            height={1465}
-            className="animate-rise h-auto w-32 drop-shadow-[0_0_24px_color-mix(in_oklab,var(--sky)_50%,transparent)] sm:w-44 lg:w-60"
-            style={{ animationDelay: ".8s" }}
+            src={anniversaryLockup}
+            alt="Festival of Praise, 20 Years Anniversary"
+            width={953}
+            height={322}
+            className="h-auto w-full drop-shadow-[0_0_40px_color-mix(in_oklab,var(--sky)_60%,transparent)]"
           />
         </h1>
         <p
