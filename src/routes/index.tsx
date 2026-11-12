@@ -215,7 +215,7 @@ function Hero() {
           style={{ animationDelay: ".2s" }}
         >
           <img
-            src={fopLogo.url}
+            src={fopLogo}
             alt="Festival of Praise"
             width={1412}
             height={656}
@@ -226,7 +226,7 @@ function Hero() {
             className="h-px w-24 bg-gradient-to-r from-transparent via-sky to-transparent sm:h-32 sm:w-px sm:bg-gradient-to-b"
           />
           <img
-            src={twentyEmblem.url}
+            src={twentyEmblem}
             alt="20 Years Anniversary"
             width={1920}
             height={1465}
