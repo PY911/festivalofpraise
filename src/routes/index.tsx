@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
           eventStatus: "https://schema.org/EventScheduled",
           location: {
             "@type": "Place",
-            name: "Bethlehem, Golf City",
+            name: EVENT.mapQuery,
             address: {
               "@type": "PostalAddress",
               addressLocality: "Golf City",

@@ -38,28 +38,25 @@ export function SiteAgreement({ pathname, children }: { pathname: string; childr
   if (accepted || isPolicyPath(pathname)) return children;
 
   return (
-    <main className="flex min-h-svh flex-col bg-background text-foreground">
-      <header className="border-b bg-deep px-5 py-7 text-snow">
-        <div className="mx-auto flex max-w-xl items-center gap-4">
+    <main className="flex min-h-svh flex-col items-center justify-center bg-secondary px-4 py-8 text-foreground">
+      <section
+        aria-labelledby="agreement-title"
+        className="w-full max-w-md rounded-3xl border bg-card p-6 shadow-xl sm:p-8"
+      >
+        <header className="flex flex-col items-center text-center">
           <img
             src={logo}
             alt="Bethlehem Society Methodist Church Ghana logo"
-            className="h-16 w-16 shrink-0 rounded-full"
+            className="h-14 w-14 rounded-full"
           />
-          <p className="text-lg font-bold">Festival of Praise @20</p>
-        </div>
-      </header>
-      <section
-        aria-labelledby="agreement-title"
-        className="mx-auto flex w-full max-w-xl flex-1 flex-col justify-center px-5 py-12"
-      >
-        <h1 id="agreement-title" className="text-2xl font-bold leading-snug text-royal sm:text-3xl">
-          Before you enter
-        </h1>
-        <p className="mt-4 leading-relaxed text-muted-foreground">
-          Please read and agree to our Terms of Use and Privacy Policy to continue.
-        </p>
-        <div className="mt-8 space-y-6 border-y py-7">
+          <h1 id="agreement-title" className="mt-3 text-xl font-bold text-royal">
+            Festival of Praise @20
+          </h1>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Please review and agree to both policies to continue.
+          </p>
+        </header>
+        <div className="mt-6 space-y-4 border-y py-5">
           <div className="flex items-start gap-3">
             <Checkbox
               id="agree-terms"
@@ -68,7 +65,7 @@ export function SiteAgreement({ pathname, children }: { pathname: string; childr
               className="mt-1 h-5 w-5"
               aria-labelledby="terms-label"
             />
-            <div id="terms-label" className="leading-relaxed">
+            <div id="terms-label" className="text-sm leading-relaxed">
               <label htmlFor="agree-terms" className="cursor-pointer">
                 I agree to the{" "}
               </label>
@@ -86,7 +83,7 @@ export function SiteAgreement({ pathname, children }: { pathname: string; childr
               className="mt-1 h-5 w-5"
               aria-labelledby="privacy-label"
             />
-            <div id="privacy-label" className="leading-relaxed">
+            <div id="privacy-label" className="text-sm leading-relaxed">
               <label htmlFor="agree-privacy" className="cursor-pointer">
                 I agree to the{" "}
               </label>
@@ -103,12 +100,12 @@ export function SiteAgreement({ pathname, children }: { pathname: string; childr
         <Button
           onClick={agree}
           disabled={!canEnterSite(terms, privacy)}
-          className="mt-7 h-12 w-full"
+          className="mt-6 h-11 w-full"
         >
-          Agree and enter <ArrowRight aria-hidden="true" />
+          Continue <ArrowRight aria-hidden="true" />
         </Button>
       </section>
-      <footer className="px-5 py-6 text-center text-sm text-muted-foreground">
+      <footer className="mt-5 px-5 text-center text-xs text-muted-foreground">
         Made with ❤️ by Media
       </footer>
     </main>

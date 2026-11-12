@@ -25,8 +25,11 @@ describe("calendar and map", () => {
     expect(ics).toContain(`LOCATION:${EVENT.venue}`);
   });
 
-  it("points the directions button at a Google Maps search for the venue", () => {
-    expect(getMapUrl()).toBe(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT.venue)}`);
+  it("points the directions button at a Google Maps search for the church venue", () => {
+    expect(EVENT.mapQuery).toBe("Bethlehem Methodist Church, Golf City");
+    expect(getMapUrl()).toBe(
+      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT.mapQuery)}`,
+    );
   });
 });
 
@@ -42,7 +45,12 @@ describe("social pages", () => {
 
 describe("cart", () => {
   it("totals quantity × price", () => {
-    expect(cartTotal([{ id: "a", name: "A", qty: 2, price: 120 }, { id: "b", name: "B", qty: 1, price: 70 }])).toBe(310);
+    expect(
+      cartTotal([
+        { id: "a", name: "A", qty: 2, price: 120 },
+        { id: "b", name: "B", qty: 1, price: 70 },
+      ]),
+    ).toBe(310);
   });
 
   it("prices the mini tumbler cup at GH₵200", () => {
@@ -66,7 +74,13 @@ describe("cart", () => {
   });
 
   it("lists the real merch items and marks the jersey out of stock", () => {
-    expect(PRODUCTS.map((p) => p.id)).toEqual(["cloth", "tumbler", "jersey", "brooch", "air-refresher"]);
+    expect(PRODUCTS.map((p) => p.id)).toEqual([
+      "cloth",
+      "tumbler",
+      "jersey",
+      "brooch",
+      "air-refresher",
+    ]);
     expect(PRODUCTS.find((p) => p.id === "jersey")?.inStock).toBe(false);
     expect(PRODUCTS.find((p) => p.id === "brooch")?.price).toBe(30);
     expect(PRODUCTS.find((p) => p.id === "air-refresher")?.price).toBe(30);

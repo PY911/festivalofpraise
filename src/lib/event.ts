@@ -7,6 +7,7 @@ export const EVENT = {
   date: "2027-03-27",
   venue: "Bethlehem, Golf City, Ghana",
   venueShort: "Bethlehem, Golf City",
+  mapQuery: "Bethlehem Methodist Church, Golf City",
   organizer: "Bethlehem Methodist Church, Bethlehem",
   programme: "Afternoon",
   /**
@@ -21,9 +22,17 @@ export const EVENT = {
  * Every link on the site points here — never a placeholder profile URL.
  */
 export const SOCIAL = [
-  { label: "Instagram", handle: "@bethlehemonline_", url: "https://www.instagram.com/bethlehemonline_/" },
+  {
+    label: "Instagram",
+    handle: "@bethlehemonline_",
+    url: "https://www.instagram.com/bethlehemonline_/",
+  },
   { label: "TikTok", handle: "@bethlehemonline", url: "https://www.tiktok.com/@bethlehemonline" },
-  { label: "Facebook", handle: "Bethlehem Society", url: "https://www.facebook.com/BethlehemSociety" },
+  {
+    label: "Facebook",
+    handle: "Bethlehem Society",
+    url: "https://www.facebook.com/BethlehemSociety",
+  },
 ] as const;
 
 /** Accra is UTC+0 year-round, so local time maps directly to UTC. Falls back to the start of the day. */
@@ -32,15 +41,23 @@ export function getStartTimestamp(date: string, startTime: string | null): numbe
   return Date.parse(`${date}T${t}:00Z`);
 }
 
-/** Google Maps search URL for the venue, so directions always match what the site shows. */
+/** Google Maps search URL for the church venue. */
 export function getMapUrl(): string {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT.venue)}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT.mapQuery)}`;
 }
 
 /** All-day ICS calendar file for festival day (start time is not yet announced). `dtstamp` is injectable for tests. */
-export function buildIcs(dtstamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "")): string {
+export function buildIcs(
+  dtstamp = new Date()
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d{3}/, ""),
+): string {
   const day = EVENT.date.replace(/-/g, "");
-  const next = new Date(Date.parse(`${EVENT.date}T00:00:00Z`) + 86_400_000).toISOString().slice(0, 10).replace(/-/g, "");
+  const next = new Date(Date.parse(`${EVENT.date}T00:00:00Z`) + 86_400_000)
+    .toISOString()
+    .slice(0, 10)
+    .replace(/-/g, "");
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
