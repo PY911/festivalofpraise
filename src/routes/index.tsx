@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg";
+import fopLogo from "@/assets/festival-of-praise-logo-white.png.asset.json";
+import twentyEmblem from "@/assets/twenty-years-emblem-white.webp.asset.json";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
@@ -209,29 +211,25 @@ function Hero() {
           Bethlehem Methodist Church presents
         </p>
         <h1
-          className="animate-rise mt-6 text-5xl font-black leading-[0.95] sm:text-7xl lg:text-8xl"
+          className="animate-rise mt-6"
           style={{ animationDelay: ".2s" }}
         >
-          Festival
-          <br />
-          of Praise
+          <img
+            src={fopLogo.url}
+            alt="Festival of Praise"
+            width={1412}
+            height={656}
+            className="mx-auto h-auto w-[18rem] sm:w-[28rem] lg:w-[34rem]"
+          />
         </h1>
-        <svg
-          viewBox="0 0 560 200"
-          className="mx-auto mt-2 w-72 overflow-visible sm:w-[30rem]"
-          role="img"
-          aria-label="@20"
-        >
-          <text
-            x="50%"
-            y="160"
-            textAnchor="middle"
-            className="twenty-stroke"
-            style={{ font: "900 160px Unbounded, sans-serif" }}
-          >
-            @20
-          </text>
-        </svg>
+        <img
+          src={twentyEmblem.url}
+          alt="20 Years Anniversary"
+          width={1920}
+          height={1465}
+          className="animate-rise mx-auto mt-4 h-auto w-40 sm:w-56"
+          style={{ animationDelay: ".8s" }}
+        />
         <p
           className="animate-rise font-display text-lg font-bold uppercase tracking-[0.3em] text-sky"
           style={{ animationDelay: "1.8s" }}
