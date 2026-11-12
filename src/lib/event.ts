@@ -5,10 +5,10 @@ export const EVENT = {
   dateLabel: "Saturday, 27 March 2027",
   dateNote: "Easter Saturday",
   date: "2027-03-27",
-  venue: "Golf City - Tema, Ghana",
-  venueShort: "Golf City - Tema",
-  organizer: "Bethlehem Methodist Church, Tema",
-  programme: "Late afternoon into the evening",
+  venue: "Bethlehem, Golf City, Ghana",
+  venueShort: "Bethlehem, Golf City",
+  organizer: "Bethlehem Methodist Church, Bethlehem",
+  programme: "Afternoon",
   /**
    * Official start time in 24h "HH:MM" (Africa/Accra, UTC+0).
    * While null, the countdown runs to the start of festival day (00:00 Accra).
@@ -44,7 +44,7 @@ export function buildIcs(dtstamp = new Date().toISOString().replace(/[-:]/g, "")
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Bethlehem Methodist Church Tema//Festival of Praise//EN",
+    "PRODID:-//Bethlehem Methodist Church Bethlehem//Festival of Praise//EN",
     "BEGIN:VEVENT",
     "UID:festival-of-praise-20@bethlehem-tema",
     `DTSTAMP:${dtstamp}`,

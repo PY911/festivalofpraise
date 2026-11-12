@@ -65,8 +65,11 @@ describe("cart", () => {
     }
   });
 
-  it("shows only products with real photos", () => {
-    expect(PRODUCTS.map((p) => p.id)).toEqual(["cloth", "tumbler"]);
+  it("lists the real merch items and marks the jersey out of stock", () => {
+    expect(PRODUCTS.map((p) => p.id)).toEqual(["cloth", "tumbler", "jersey", "brooch", "air-refresher"]);
+    expect(PRODUCTS.find((p) => p.id === "jersey")?.inStock).toBe(false);
+    expect(PRODUCTS.find((p) => p.id === "brooch")?.price).toBe(30);
+    expect(PRODUCTS.find((p) => p.id === "air-refresher")?.price).toBe(30);
   });
 
   it("quotes a real total when every item in the order has a price", () => {

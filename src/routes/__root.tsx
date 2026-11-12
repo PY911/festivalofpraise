@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Festival of Praise @20" },
       {
         name: "description",
-        content: "Festival of Praise @20 — Bethlehem Methodist Church, Tema.",
+        content: "Festival of Praise @20 — Bethlehem Methodist Church, Bethlehem.",
       },
     ],
     links: [
