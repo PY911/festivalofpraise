@@ -106,7 +106,7 @@ export function SiteAgreement({ pathname, children }: { pathname: string; childr
         </Button>
       </section>
       <footer className="mt-5 px-5 text-center text-xs text-muted-foreground">
-        Made with ❤️ by Media
+        Made with ❤️ by Bethlehem Information Lab (BIL)
       </footer>
     </main>
   );

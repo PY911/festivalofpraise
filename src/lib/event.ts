@@ -5,10 +5,10 @@ export const EVENT = {
   dateLabel: "Saturday, 27 March 2027",
   dateNote: "Easter Saturday",
   date: "2027-03-27",
-  venue: "Bethlehem, Golf City, Ghana",
-  venueShort: "Bethlehem, Golf City",
-  mapQuery: "Bethlehem Methodist Church, Golf City",
-  organizer: "Bethlehem Methodist Church, Bethlehem",
+  venue: "Bethlehem, Off Golf City main road",
+  venueShort: "Bethlehem, Off Golf City main road",
+  mapQuery: "Bethlehem Methodist Church, Off Golf City main road",
+  organizer: "Bethlehem Methodist Church",
   programme: "Afternoon",
   /**
    * Official start time in 24h "HH:MM" (Africa/Accra, UTC+0).

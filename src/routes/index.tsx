@@ -7,9 +7,9 @@ import logo from "@/assets/bethlehem-logo.jpg";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
-const TITLE = "Festival of Praise @20 — 27 March 2027 | Bethlehem, Golf City";
+const TITLE = "Festival of Praise @20 — 27 March 2027 | Bethlehem, Off Golf City main road";
 const DESC =
-  "Two Decades of Praise. One Unforgettable Celebration. Open-air gospel concert at Bethlehem, Golf City — Saturday 27 March 2027.";
+  "Two Decades of Praise. One Unforgettable Celebration. Open-air gospel concert at Bethlehem, Off Golf City main road — Saturday 27 March 2027.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,7 +37,8 @@ export const Route = createFileRoute("/")({
             name: EVENT.mapQuery,
             address: {
               "@type": "PostalAddress",
-              addressLocality: "Golf City",
+              addressLocality: "Bethlehem",
+              streetAddress: "Off Golf City main road",
               addressCountry: "GH",
             },
           },
@@ -205,7 +206,7 @@ function Hero() {
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-16 text-center">
         <p className="animate-rise text-xs font-bold uppercase tracking-[0.4em] text-sky">
-          Bethlehem Methodist Church, Bethlehem presents
+          Bethlehem Methodist Church presents
         </p>
         <h1
           className="animate-rise mt-6 text-5xl font-black leading-[0.95] sm:text-7xl lg:text-8xl"
@@ -500,7 +501,7 @@ function Share() {
       <Reveal className="mx-auto max-w-3xl">
         <h2 className="text-4xl font-black text-royal sm:text-5xl">Share the celebration</h2>
         <p className="mt-4 text-muted-foreground">
-          Invite family and friends to Festival of Praise @20 at Bethlehem, Golf City.
+          Invite family and friends to Festival of Praise @20 at {EVENT.venue}.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
@@ -602,7 +603,7 @@ function Footer() {
       </nav>
       <p className="mt-6 text-center text-sm text-snow/60">
         {" "}
-        Made with ❤️ by Bethlehem Methodist Media
+        Made with ❤️ by Bethlehem Information Lab (BIL)
       </p>
       <button
         aria-label="Back to top"

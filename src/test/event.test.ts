@@ -26,7 +26,9 @@ describe("calendar and map", () => {
   });
 
   it("points the directions button at a Google Maps search for the church venue", () => {
-    expect(EVENT.mapQuery).toBe("Bethlehem Methodist Church, Golf City");
+    expect(EVENT.venue).toBe("Bethlehem, Off Golf City main road");
+    expect(EVENT.organizer).toBe("Bethlehem Methodist Church");
+    expect(EVENT.mapQuery).toBe("Bethlehem Methodist Church, Off Golf City main road");
     expect(getMapUrl()).toBe(
       `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT.mapQuery)}`,
     );
