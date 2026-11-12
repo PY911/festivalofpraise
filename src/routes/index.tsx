@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero-field.jpg";
 import logo from "@/assets/bethlehem-logo.jpg";
-import fopLogo from "@/assets/festival-of-praise-logo-white.png.asset.json";
-import twentyEmblem from "@/assets/twenty-years-emblem-white.webp.asset.json";
+import fopLogo from "@/assets/festival-of-praise-logo-white.png";
+import twentyEmblem from "@/assets/twenty-years-emblem-white.webp";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
@@ -215,7 +215,7 @@ function Hero() {
           style={{ animationDelay: ".2s" }}
         >
           <img
-            src={fopLogo.url}
+            src={fopLogo}
             alt="Festival of Praise"
             width={1412}
             height={656}
@@ -226,7 +226,7 @@ function Hero() {
             className="h-px w-24 bg-gradient-to-r from-transparent via-sky to-transparent sm:h-32 sm:w-px sm:bg-gradient-to-b"
           />
           <img
-            src={twentyEmblem.url}
+            src={twentyEmblem}
             alt="20 Years Anniversary"
             width={1920}
             height={1465}
