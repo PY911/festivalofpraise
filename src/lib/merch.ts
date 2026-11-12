@@ -41,7 +41,7 @@ export const PRODUCTS: Product[] = [
     inStock: false,
     note: "Out of stock",
   },
-  { id: "brooch", name: "Brooch", image: broochPhoto, price: 30 },
+  { id: "brooch", name: "Broach", image: broochPhoto, price: 30 },
   { id: "air-refresher", name: "Air Refresher", image: airRefresherPhoto, price: 30 },
 ];
 

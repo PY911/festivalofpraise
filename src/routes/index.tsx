@@ -9,9 +9,9 @@ import twentyEmblem from "@/assets/twenty-years-emblem-white.webp";
 import { EVENT, SOCIAL, buildIcs, getMapUrl, getRemaining, getStartTimestamp } from "@/lib/event";
 import { MerchStore } from "@/components/MerchStore";
 
-const TITLE = "Festival of Praise @20 — 27 March 2027 | Bethlehem, Off Golf City main road";
+const TITLE = "Festival of Praise @20 — 27 March 2027 | Bethlehem, Off Golf City Main Road";
 const DESC =
-  "Two Decades of Praise. One Unforgettable Celebration. Open-air gospel concert at Bethlehem, Off Golf City main road — Saturday 27 March 2027.";
+  "Two Decades of Praise. One Unforgettable Celebration. Open-air gospel concert at Bethlehem, Off Golf City Main Road — Saturday 27 March 2027.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/")({
             address: {
               "@type": "PostalAddress",
               addressLocality: "Bethlehem",
-              streetAddress: "Off Golf City main road",
+              streetAddress: "Off Golf City Main Road",
               addressCountry: "GH",
             },
           },
@@ -211,7 +211,7 @@ function Hero() {
           Bethlehem Methodist Church, Bethlehem presents
         </p>
         <h1
-          className="animate-rise mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center sm:gap-8"
+          className="animate-rise mt-8 flex flex-col items-center gap-5 lg:flex-row lg:justify-center lg:gap-8"
           style={{ animationDelay: ".2s" }}
         >
           <img
@@ -219,18 +219,18 @@ function Hero() {
             alt="Festival of Praise"
             width={1412}
             height={656}
-            className="h-auto w-[17rem] drop-shadow-[0_0_28px_color-mix(in_oklab,var(--sky)_55%,transparent)] sm:w-[26rem] lg:w-[32rem]"
+            className="h-auto w-[17rem] drop-shadow-[0_0_28px_color-mix(in_oklab,var(--sky)_55%,transparent)] sm:w-[28rem] lg:w-[38rem]"
           />
           <span
             aria-hidden="true"
-            className="h-px w-24 bg-gradient-to-r from-transparent via-sky to-transparent sm:h-32 sm:w-px sm:bg-gradient-to-b"
+            className="h-px w-24 bg-gradient-to-r from-transparent via-sky to-transparent lg:h-32 lg:w-px lg:bg-gradient-to-b"
           />
           <img
             src={twentyEmblem}
             alt="20 Years Anniversary"
             width={1920}
             height={1465}
-            className="animate-rise h-auto w-32 drop-shadow-[0_0_24px_color-mix(in_oklab,var(--sky)_50%,transparent)] sm:w-40 lg:w-48"
+            className="animate-rise h-auto w-32 drop-shadow-[0_0_24px_color-mix(in_oklab,var(--sky)_50%,transparent)] sm:w-44 lg:w-60"
             style={{ animationDelay: ".8s" }}
           />
         </h1>

@@ -5,9 +5,9 @@ export const EVENT = {
   dateLabel: "Saturday, 27 March 2027",
   dateNote: "Easter Saturday",
   date: "2027-03-27",
-  venue: "Bethlehem, Off Golf City main road",
-  venueShort: "Bethlehem, Off Golf City main road",
-  mapQuery: "Bethlehem Methodist Church, Off Golf City main road",
+  venue: "Bethlehem, Off Golf City Main Road",
+  venueShort: "Bethlehem, Off Golf City Main Road",
+  mapQuery: "Bethlehem Methodist Church, Off Golf City Main Road",
   organizer: "Bethlehem Methodist Church",
   programme: "Afternoon",
   /**
