@@ -44,7 +44,7 @@ function ProductImages({
           src={images[activeIndex]}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full scale-110 object-cover blur-md opacity-40"
+          className="absolute inset-0 h-full w-full scale-110 object-cover blur-md"
         />
       )}
       <img
@@ -187,7 +187,7 @@ export function MerchStore() {
                   name={p.name}
                   images={images}
                   fit={["brooch", "air-refresher"].includes(p.id) ? "cover" : "contain"}
-                  fillBackground={p.id === "cloth"}
+                  fillBackground={["cloth", "tumbler"].includes(p.id)}
                 />
                 <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-center justify-between gap-2">
