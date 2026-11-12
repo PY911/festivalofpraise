@@ -7,13 +7,11 @@ import {
   HeadContent,
   Scripts,
   type ErrorComponentProps,
-  useRouterState,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SiteAgreement } from "../components/SiteAgreement";
 
 function NotFoundComponent() {
   return (
@@ -122,14 +120,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteAgreement pathname={pathname}>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
-      </SiteAgreement>
     </QueryClientProvider>
   );
 }
