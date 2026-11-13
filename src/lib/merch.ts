@@ -8,7 +8,7 @@ import jerseyFrontPhoto from "@/assets/jersey-front.jpg";
 import tumblerPhoto from "@/assets/mini-tumbler-cup.jpg";
 
 /** Order-desk WhatsApp number in international format without "+" (e.g. "233241234567"). Null = buyer picks the contact. */
-export const ORDER_WHATSAPP: string | null = null;
+export const ORDER_WHATSAPP: string | null = "233570895080";
 
 export type Product = {
   id: string;
