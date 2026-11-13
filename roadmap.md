@@ -6,6 +6,7 @@
 - [x] Stabilize mobile Menu button; check scrolling and menu navigation
 - [x] Merch store on the site (sample prices; orders saved + WhatsApp handoff)
 - [x] Live countdown to festival day
+- [x] Remove the hidden orders desk page and its passcode code (order saving in the store kept)
 - [x] Real social links (Instagram, TikTok, Facebook) wired in Share + footer
 - [x] Terms and Privacy contact links read from the same official social list
 - [x] Mini tumbler cup price confirmed: GH₵200 (shown on its card and in the order total)
