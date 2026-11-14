@@ -46,6 +46,18 @@ describe("Orders desk export", () => {
     expect(csv).toContain("\"'=2+2\"");
     expect(csv).toContain("\"'+233501234567\"");
   });
+
+  it("exports all 1,001 orders without truncating the file", () => {
+    const manyOrders = Array.from({ length: 1001 }, (_, index) => ({
+      ...orders[0]!,
+      id: `order-${index + 1}`,
+    }));
+
+    const csv = ordersToCsv(manyOrders);
+
+    expect(csv.split("\r\n")).toHaveLength(1002);
+    expect(csv).toContain('"order-1001"');
+  });
 });
 
 describe("Orders desk data formatting and PIN comparison", () => {
