@@ -43,8 +43,8 @@ describe("Orders desk export", () => {
   it("does not let customer-entered cells become spreadsheet formulas", () => {
     const csv = ordersToCsv([{ ...orders[0]!, customer_name: "=2+2", notes: "+233501234567" }]);
 
-    expect(csv).toContain('"'=2+2"');
-    expect(csv).toContain('"'+233501234567"');
+    expect(csv).toContain("\"'=2+2\"");
+    expect(csv).toContain("\"'+233501234567\"");
   });
 });
 

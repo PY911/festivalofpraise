@@ -16,10 +16,7 @@ async function pinDigest(pin: string): Promise<Uint8Array> {
   return new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
 }
 
-async function suppliedPinMatches(suppliedPin: string): Promise<boolean> {
-  // This helper is called only from server handlers; secrets never enter the browser bundle.
-  const configuredPin = process.env["ORDERS_DESK_PIN"];
-  if (!configuredPin) throw new Error("Orders desk access is not configured");
+async function suppliedPinMatches(suppliedPin: string, configuredPin: string): Promise<boolean> {
   const [supplied, configured] = await Promise.all([
     pinDigest(suppliedPin),
     pinDigest(configuredPin),
