@@ -139,17 +139,25 @@ export function MerchStore() {
       return;
     }
     setState("saving");
-    const { error } = await supabase.from("merch_orders").insert({
-      customer_name: n,
-      phone: ph,
-      notes: notes.trim() || null,
-      items: cart,
-      total_ghs: quoted ?? 0,
-    });
-    if (error) {
+    const fail = () => {
       setState("error");
-      setMsg("Sorry, your order couldn't be saved. Please try again.");
-      return;
+      setMsg("Sorry, your order couldn't be saved. Please check your connection and try again.");
+    };
+    try {
+      const insert = supabase.from("merch_orders").insert({
+        customer_name: n,
+        phone: ph,
+        notes: notes.trim() || null,
+        items: cart,
+        total_ghs: quoted ?? 0,
+      });
+      const timeout = new Promise<{ error: Error }>((resolve) =>
+        setTimeout(() => resolve({ error: new Error("timeout") }), 15000),
+      );
+      const { error } = await Promise.race([insert, timeout]);
+      if (error) return fail();
+    } catch {
+      return fail();
     }
     setMsg(orderMessage(n, ph, cart, notes.trim()));
     setState("done");
