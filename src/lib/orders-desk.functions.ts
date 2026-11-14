@@ -28,7 +28,9 @@ export const listOrders = createServerFn({ method: "POST" })
   .inputValidator(pinInput)
   .handler(async ({ data }) => {
     setResponseHeader("Cache-Control", "private, no-store");
-    if (!(await suppliedPinMatches(data.pin))) return { ok: false as const };
+    const configuredPin = process.env["ORDERS_DESK_PIN"];
+    if (!configuredPin) throw new Error("Orders desk access is not configured");
+    if (!(await suppliedPinMatches(data.pin, configuredPin))) return { ok: false as const };
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const orders: OrderRecord[] = [];
@@ -74,7 +76,9 @@ export const updateOrderStatus = createServerFn({ method: "POST" })
   )
   .handler(async ({ data }) => {
     setResponseHeader("Cache-Control", "private, no-store");
-    if (!(await suppliedPinMatches(data.pin))) return { ok: false as const };
+    const configuredPin = process.env["ORDERS_DESK_PIN"];
+    if (!configuredPin) throw new Error("Orders desk access is not configured");
+    if (!(await suppliedPinMatches(data.pin, configuredPin))) return { ok: false as const };
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: updated, error } = await supabaseAdmin
