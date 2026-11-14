@@ -14,5 +14,6 @@
 - [x] Removed all generated product images; store shows only real photos (cloth + tumbler)
 - [ ] Real photos for t-shirt, jersey, mug and air refresher / lapel pin (user will upload; lapel pin prices ready: GH₵30 each, GH₵50 for two; jersey is pre-order)
 - [ ] Prices for t-shirt and mug (waiting on user)
-- [ ] Order-desk WhatsApp number (waiting on user)
+- [x] Order-desk WhatsApp number updated to +233 50 407 0722
+- [ ] Restore private orders desk with full-order CSV export (awaiting choice: private page code in GitHub sync, or backend-only records)
 - [ ] Online payment gateway (user will add later)
