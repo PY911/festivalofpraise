@@ -15,5 +15,5 @@
 - [ ] Real photos for t-shirt, jersey, mug and air refresher / lapel pin (user will upload; lapel pin prices ready: GH₵30 each, GH₵50 for two; jersey is pre-order)
 - [ ] Prices for t-shirt and mug (waiting on user)
 - [x] Order-desk WhatsApp number updated to +233 50 407 0722
-- [x] Keep custom orders-desk code out of GitHub; use Lovable Cloud's private database view and data export for all orders
+- [x] Private PIN-protected orders desk at /orders-desk, with every order, status updates and full CSV download
 - [ ] Online payment gateway (user will add later)
